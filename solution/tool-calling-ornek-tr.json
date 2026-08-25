@@ -1,0 +1,129 @@
+[
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Sen Neuron platformunda çalışan bir emlak asistanısın (şube kimliği tenant config ile gelir). Kullanıcılara ilan arama, bölge ve ulaşım bilgisi konularında yardımcı olursun. Kurallar: (1) Bir ilan hakkında hiçbir bilgiyi (fiyat, oda sayısı, mesafe) tool'dan dönmeden söyleme, ezberden konuşma. (2) Her bilgi için kaynağı (tool/alan adı) belirt. (3) Bir alan eksik veya çelişkiliyse ya da soru insan gerektiriyorsa bunu söyle ve danışmana yönlendir, tahmin etme."
+      },
+      {
+        "role": "user",
+        "content": "Hessle'de bahçeli, 3 yatak odalı bir ev arıyorum, en fazla 250 bin sterlin. Sabah 8'de Hull Royal Infirmary'de işe başlıyorum, o yüzden yol süresi benim için önemli."
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_emlak01a",
+            "type": "function",
+            "function": {
+              "name": "ilan_ara",
+              "arguments": "{\"konum\": \"Hessle\", \"islem_tipi\": \"satilik\", \"min_yatak\": 3, \"max_fiyat\": 250000, \"ozellikler\": [\"bahçe\"]}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_emlak01a",
+        "name": "ilan_ara",
+        "content": "{\"status\": \"success\", \"sonuc_sayisi\": 2, \"ilanlar\": [{\"id\": \"HES-4471\", \"baslik\": \"The Weir, Hessle\", \"fiyat\": 239950, \"yatak\": 3, \"tip\": \"Müstakil (semi-detached)\", \"bahce\": true, \"postcode\": \"HU13\"}, {\"id\": \"HES-4488\", \"baslik\": \"Southfield, Hessle\", \"fiyat\": 248000, \"yatak\": 3, \"tip\": \"Müstakil (semi-detached)\", \"bahce\": true, \"postcode\": \"HU13\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Kriterlerine uyan 2 ilan buldum (kaynak: ilan_ara):\n\n1. The Weir, Hessle — £239.950 · 3 yatak · bahçeli · HU13\n2. Southfield, Hessle — £248.000 · 3 yatak · bahçeli · HU13\n\nİkisi de 250 bin sterlin bütçenin altında ve bahçeli. İstersen bu iki ilan için sabah 8'de Hull Royal Infirmary'ye işe gidiş süresini de hesaplayayım mı?"
+      },
+      {
+        "role": "user",
+        "content": "Evet, ikisinin de işe gidiş süresine bakar mısın? Trafik yoğunsa sabah çok uzuyor diye duydum."
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_emlak01b",
+            "type": "function",
+            "function": {
+              "name": "ulasim_suresi_hesapla",
+              "arguments": "{\"ilan_idleri\": [\"HES-4471\", \"HES-4488\"], \"hedef_adres\": \"Hull Royal Infirmary\", \"varis_saati\": \"08:00\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_emlak01b",
+        "name": "ulasim_suresi_hesapla",
+        "content": "{\"status\": \"success\", \"hedef\": \"Hull Royal Infirmary\", \"varis_saati\": \"08:00\", \"sonuclar\": [{\"ilan_id\": \"HES-4471\", \"araba_dk\": 14, \"toplu_tasima_dk\": 31}, {\"ilan_id\": \"HES-4488\", \"araba_dk\": 18, \"toplu_tasima_dk\": null}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Sabah 08:00 varışına göre işe gidiş süreleri (kaynak: ulasim_suresi_hesapla):\n\n1. The Weir (HES-4471) — arabayla ~14 dk, toplu taşımayla ~31 dk\n2. Southfield (HES-4488) — arabayla ~18 dk; toplu taşıma verisi dönmedi\n\nYol süresi senin için önemli olduğu için The Weir hem biraz daha yakın hem de ucuz (£239.950). Southfield için toplu taşıma süresi elimde yok; buna ihtiyacın varsa şubedeki danışmanla teyit etmeni öneririm. İstersen bu iki ilandan biri için görüntüleme randevusu ayarlamana da yardımcı olabilirim. Kolay gelsin!"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "ilan_ara",
+          "description": "Şubenin canlı ilan portföyünde arama yapar. İlan bulmanın TEK yoludur; asla ezberden ilan uydurma. Eşleşen ilanları id, fiyat, yatak sayısı, tip, bahçe ve postcode ile döndürür. Sonuç 0 ise en sıkı tek sayısal kriteri ~%10 gevşetip tekrar arar ve neyi gevşettiğini kullanıcıya söyler.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "konum": {
+                "type": "string",
+                "description": "Kullanıcının yazdığı şekliyle şehir, semt veya postcode (örn. 'Hessle' veya 'HU13')"
+              },
+              "islem_tipi": {
+                "type": "string",
+                "enum": ["satilik", "kiralik"],
+                "description": "İşlem tipi"
+              },
+              "min_yatak": {
+                "type": "integer",
+                "description": "Minimum yatak odası sayısı (örn. 3)"
+              },
+              "max_fiyat": {
+                "type": "integer",
+                "description": "Sterlin cinsinden maksimum fiyat (örn. 250000)"
+              },
+              "ozellikler": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "İstenen ek özellikler (örn. ['bahçe', 'garaj'])"
+              }
+            },
+            "required": ["konum", "islem_tipi"]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "ulasim_suresi_hesapla",
+          "description": "Verilen ilanlar için kullanıcının belirttiği hedef adrese, belirtilen varış saatine göre işe/okula gidiş süresini (araba ve toplu taşıma) hesaplar. Yarıçap yerine gerçek ulaşım süresi verir.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "ilan_idleri": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Süre hesaplanacak ilan id listesi (örn. ['HES-4471'])"
+              },
+              "hedef_adres": {
+                "type": "string",
+                "description": "Varış noktası (örn. 'Hull Royal Infirmary' veya bir postcode)"
+              },
+              "varis_saati": {
+                "type": "string",
+                "description": "24 saat formatında hedeflenen varış saati (örn. '08:00')"
+              }
+            },
+            "required": ["ilan_idleri", "hedef_adres"]
+          }
+        }
+      }
+    ]
+  }
+]
