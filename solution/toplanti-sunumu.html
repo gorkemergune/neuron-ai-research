@@ -1,0 +1,1975 @@
+<title>21 Emlak Sitesi — Eksikler ve Çözümler</title>
+<style>
+  :root {
+    --paper: #edeff2;
+    --panel: #f6f7f9;
+    --ink: #191c22;
+    --ink-soft: #4a505b;
+    --line: #d3d8df;
+    --line-soft: #e2e6eb;
+    --accent: #2f4bd4;
+    --accent-soft: #5e77e8;
+    --problem: #b4451f;
+    --problem-bg: #f7e7df;
+    --solution: #137a55;
+    --solution-bg: #ddefe7;
+    --neutral-bias: #8a93a2;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono:
+      ui-monospace, 'SFMono-Regular', 'Cascadia Code', 'Consolas', monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #111419;
+      --panel: #171b22;
+      --ink: #e7eaef;
+      --ink-soft: #9ba4b2;
+      --line: #2a303a;
+      --line-soft: #22272f;
+      --accent: #7c93f5;
+      --accent-soft: #5e77e8;
+      --problem: #e9835b;
+      --problem-bg: #2c1b12;
+      --solution: #4fc79a;
+      --solution-bg: #0f241c;
+    }
+  }
+  :root[data-theme='light'] {
+    --paper: #edeff2;
+    --panel: #f6f7f9;
+    --ink: #191c22;
+    --ink-soft: #4a505b;
+    --line: #d3d8df;
+    --line-soft: #e2e6eb;
+    --accent: #2f4bd4;
+    --accent-soft: #5e77e8;
+    --problem: #b4451f;
+    --problem-bg: #f7e7df;
+    --solution: #137a55;
+    --solution-bg: #ddefe7;
+  }
+  :root[data-theme='dark'] {
+    --paper: #111419;
+    --panel: #171b22;
+    --ink: #e7eaef;
+    --ink-soft: #9ba4b2;
+    --line: #2a303a;
+    --line-soft: #22272f;
+    --accent: #7c93f5;
+    --accent-soft: #5e77e8;
+    --problem: #e9835b;
+    --problem-bg: #2c1b12;
+    --solution: #4fc79a;
+    --solution-bg: #0f241c;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* progress bar */
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 20px;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .brandmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .brandmark b {
+    color: var(--accent);
+  }
+  .track {
+    flex: 1;
+    height: 3px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .track > i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .counter {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  main {
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-padding-top: 44px;
+  }
+  section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    padding: 76px 7vw 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  @media (max-width: 640px) {
+    section {
+      padding: 66px 24px 90px;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-wrap: balance;
+    max-width: 16ch;
+  }
+  .lede {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 26px 0 0;
+  }
+  .meta-row {
+    margin-top: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink-soft);
+    background: var(--panel);
+  }
+  .tag.k {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  }
+
+  /* site slides */
+  .site {
+    display: grid;
+    grid-template-columns: minmax(200px, 300px) 1fr;
+    gap: min(6vw, 64px);
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .site {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+  }
+  .site-index {
+    position: relative;
+  }
+  .num {
+    font-family: var(--serif);
+    font-size: clamp(3.6rem, 9vw, 6.4rem);
+    line-height: 0.9;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+  .num small {
+    font-size: 0.34em;
+    color: var(--neutral-bias);
+    vertical-align: super;
+    font-family: var(--mono);
+    letter-spacing: 0;
+    margin-left: 2px;
+  }
+  .site-name {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    margin: 14px 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .domain {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--accent);
+    word-break: break-all;
+  }
+  .locale {
+    margin-top: 16px;
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--panel);
+    border: 1px solid var(--line-soft);
+  }
+  .oneline {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 34ch;
+  }
+
+  .blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+  }
+  .block {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+  .block-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .block.problem .block-head {
+    background: var(--problem-bg);
+    color: var(--problem);
+  }
+  .block.solution .block-head {
+    background: var(--solution-bg);
+    color: var(--solution);
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex: none;
+  }
+  .block.problem .dot {
+    background: var(--problem);
+  }
+  .block.solution .dot {
+    background: var(--solution);
+  }
+  .block ul {
+    margin: 0;
+    padding: 16px 20px 18px 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+  .block li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .block li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    transform: rotate(45deg);
+  }
+  .block.problem li::before {
+    background: var(--problem);
+    opacity: 0.55;
+  }
+  .block.solution li::before {
+    background: var(--solution);
+    opacity: 0.7;
+  }
+  .block li b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .block li .hl {
+    font-family: var(--mono);
+    font-size: 0.86em;
+    background: var(--paper);
+    padding: 1px 5px;
+    border-radius: 4px;
+    border: 1px solid var(--line-soft);
+    white-space: nowrap;
+  }
+  .flag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin-left: 6px;
+    vertical-align: middle;
+    background: var(--problem-bg);
+    color: var(--problem);
+    font-weight: 700;
+  }
+  .flag.win {
+    background: var(--solution-bg);
+    color: var(--solution);
+  }
+
+  /* summary slides */
+  .grid2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+    padding: 20px 22px;
+  }
+  .card h3 {
+    margin: 0 0 8px;
+    font-family: var(--sans);
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .card h3 .gid {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .card p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .card .ev {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--neutral-bias);
+  }
+
+  .roadmap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+    counter-reset: step;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 18px;
+    align-items: start;
+    border-left: 2px solid var(--line);
+    padding: 4px 0 16px 20px;
+    margin-left: 8px;
+    position: relative;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: -15px;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .step:last-child {
+    border-left-color: transparent;
+  }
+  .phase {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 4px;
+  }
+  .step h4 {
+    margin: 0 0 4px;
+    font-size: 15px;
+  }
+  .step p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .guard {
+    margin-top: 26px;
+    border: 1px dashed color-mix(in srgb, var(--problem) 45%, var(--line));
+    border-radius: 12px;
+    padding: 18px 22px;
+    background: var(--problem-bg);
+  }
+  .guard h3 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-family: var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--problem);
+  }
+  .guard ul {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .guard li {
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .action {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    background: var(--panel);
+    padding: 16px 18px;
+  }
+  .action b {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .action span {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  h2.big {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .section-lede {
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 0 30px;
+    font-size: 15px;
+  }
+
+  /* agenda */
+  .agenda {
+    columns: 2;
+    column-gap: 40px;
+    margin-top: 8px;
+  }
+  @media (max-width: 700px) {
+    .agenda {
+      columns: 1;
+    }
+  }
+  .agenda a {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line-soft);
+    break-inside: avoid;
+    font-size: 14px;
+  }
+  .agenda a:hover {
+    color: var(--accent);
+  }
+  .agenda a .an {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--neutral-bias);
+    font-variant-numeric: tabular-nums;
+    min-width: 26px;
+  }
+  .agenda a:hover .an {
+    color: var(--accent);
+  }
+
+  /* nav */
+  .nav {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50;
+    display: flex;
+    gap: 8px;
+  }
+  .nav button {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 18px;
+    display: grid;
+    place-items: center;
+    transition:
+      border-color 0.15s,
+      color 0.15s;
+  }
+  .nav button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .nav button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .hint {
+    position: fixed;
+    left: 20px;
+    bottom: 24px;
+    z-index: 40;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--neutral-bias);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 640px) {
+    .hint {
+      display: none;
+    }
+  }
+
+  .footer-note {
+    position: absolute;
+    bottom: 26px;
+    left: 7vw;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--neutral-bias);
+    letter-spacing: 0.05em;
+  }
+  @media (max-width: 640px) {
+    .footer-note {
+      left: 24px;
+    }
+  }
+</style>
+
+<div class="topbar">
+  <span class="brandmark"><b>NEURON</b> · ICEBERG PLATFORMU</span>
+  <span class="track"><i id="prog"></i></span>
+  <span class="counter"
+    ><span id="cur">01</span> / <span id="tot">25</span></span
+  >
+</div>
+
+<main id="deck">
+  <!-- 01 TITLE -->
+  <section data-title="Kapak">
+    <p class="eyebrow">Toplantı Sunumu · 26 Ağustos 2026</p>
+    <h1>21 Emlak Sitesi: Eksikler ve Çözümler</h1>
+    <p class="lede">
+      Neuron | Iceberg platformundaki 21 canlı emlak sitesinin site-site sorun
+      ve çözüm haritası. Her site için önce
+      <b style="color: var(--problem)">Sorun</b>, ardından
+      <b style="color: var(--solution)">Çözüm</b>. Son iki sayfada genel
+      sorunlar ve ortak yapılacaklar.
+    </p>
+    <div class="meta-row">
+      <span class="tag k">:)</span>
+      <span class="tag">4 turlu bağımsız inceleme sentezi</span>
+      <span class="tag">Ağustos 2026 canlı doğrulama</span>
+    </div>
+    <div class="footer-note">↓ kaydır · → ok tuşları ile ilerle</div>
+  </section>
+
+  <!-- 02 CONTEXT -->
+  <section data-title="Tez">
+    <p class="eyebrow">Okumadan önce · Platform tezi</p>
+    <h2 class="big">21 ayrı site değil, tek bir platform</h2>
+    <p class="section-lede">
+      Sitelerin hiçbiri bağımsız bir yazılım değil — hepsi
+      <b>aynı Neuron | Iceberg</b> yığınında çalışıyor (Vercel + Lifesycle CRM +
+      S3 CDN, footer: "AI Operating System for Estate Agents"). Bileşenler her
+      tenant'ta aynı; fark yalnızca hangisinin <b>açık</b> olduğu.
+    </p>
+    <div class="grid2">
+      <div class="card">
+        <h3><span class="gid">→</span> Sonuç</h3>
+        <p>
+          Eksiklerin neredeyse tamamı <b>tenant'a değil platforma</b> ait. Doğru
+          strateji: özelliği Neuron'da <b>bir kez</b> inşa et, config ile 21+
+          acenteye yay.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">→</span> Kanıt</h3>
+        <p>
+          Chatbot, InstantValuation, StampDutyCalculator, WhatsApp widget,
+          match-scoring bileşenleri kaynak kodda her sitede var — çoğu
+          <b>pasif (dormant)</b>.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">→</span> Bu sunum</h3>
+        <p>
+          Yarın 4 kişi siteleri tek tek yeniden açarken tartışma zemini: her
+          sitede öne çıkan sorun + önerilen çözüm, sonra genel resim.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 AGENDA -->
+  <section data-title="İçindekiler">
+    <p class="eyebrow">İçindekiler · 21 site</p>
+    <h2 class="big">Gündem</h2>
+    <nav class="agenda" id="agenda"></nav>
+  </section>
+
+  <!-- ===== SITE SLIDES injected below ===== -->
+
+  <!-- 01 -->
+  <section data-title="Kinetic">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">01</div>
+        <div class="site-name">Kinetic</div>
+        <div class="domain">kineticestateagents.co.uk</div>
+        <div class="locale">Lincolnshire · İngiltere</div>
+        <p class="oneline">
+          Enerjik, anti-kurumsal marka; sorun güven değil, keşif sürtünmesi.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Property-type filtresi ve doğal dil araması yok; ana sayfa sadece
+              Buy/Rent.
+            </li>
+            <li>
+              Aynı ilanda <b>başlık 2 yatak / detay 3 yatak</b> çelişkisi — 3
+              bağımsız incelemeci doğruladı.<span class="flag"
+                >veri kalitesi</span
+              >
+            </li>
+            <li>
+              Footer iki kez render +
+              <span class="hl">Company Number: NaN</span> (template hatası, 07
+              ile ortak).
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              <b>Yayın öncesi tutarlılık denetçisi:</b> başlık↔detay yatak/fiyat
+              çelişkisini yakalayıp danışmanı uyarır.
+            </li>
+            <li>
+              <b>NL arama katmanı</b> (mevcut filtre API'sine map) + pasif
+              <span class="hl">.live-search-container</span> aç.
+            </li>
+            <li>Footer/NaN template bug fix.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section data-title="Town & City">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">02</div>
+        <div class="site-name">Town &amp; City</div>
+        <div class="domain">townandcityhomes.com</div>
+        <div class="locale">Essex · İngiltere</div>
+        <p class="oneline">
+          Sahte kişiselleştirme ve iki kafası karışık değerleme akışı.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              <b>"100% MATCH"</b> rozeti 44/44 ilanda — kriter girmemiş anonim
+              kullanıcıya bile.<span class="flag">güven riski</span>
+            </li>
+            <li>
+              Değerlemede iki giriş noktası çok farklı deneyim: "In a hurry?"
+              kısa yol rakam vermeden lead topluyor, tam form gerçek aralık
+              (£174k–£301k) gösteriyor.
+            </li>
+            <li>Rakam gösterilse bile "neden" açıklaması yok.</li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Rozeti <b>gerçek eşleşme motoruna bağla</b> (kriter uyumu +
+              davranış) ya da kaldır.
+            </li>
+            <li>İki değerleme girişini <b>tek tutarlı akışta</b> birleştir.</li>
+            <li>
+              Değerleme rakamının altına <b>AI açıklama katmanı</b> (3 faktör).
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section data-title="Harrisons">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">03</div>
+        <div class="site-name">Harrisons</div>
+        <div class="domain">harrisonshomes.co.uk</div>
+        <div class="locale">Kent · İngiltere</div>
+        <p class="oneline">
+          Çalışan altyapı var — ama kişiselleştirmeye dönüşmüyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Gerçek magic-link login var ama giriş yapan kullanıcı için
+              <b>erişim dışında hiçbir şey değişmiyor</b>.
+            </li>
+            <li>
+              Güçlü ana sayfa istatistikleri (satış oranı, ek gelir) ilan
+              sayfalarına hiç ulaşmıyor.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Login sonrası <b>kişiselleştirme</b>: görüntülenen/kaydedilen
+              ilana göre ranking + benzer ilan.
+            </li>
+            <li>
+              Çalışan <b>Cal.com randevu</b> ve
+              <span class="hl">propalt.io</span> gerçek instant değerleme
+              <b>referans template</b> — viewing'lere yay.<span class="flag win"
+                >çalışıyor</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section data-title="Lloyds">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">04</div>
+        <div class="site-name">Lloyds</div>
+        <div class="domain">lloydsestates.com</div>
+        <div class="locale">Londra · İngiltere</div>
+        <p class="oneline">
+          Londra acentesi ama arama Londralı gibi düşünmüyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Yarıçap-tabanlı arama; alıcı "Central line'a yürüme mesafesi" ile
+              düşünüyor — <b>commute araması yok</b>.
+            </li>
+            <li>
+              Çok ofisli yapı (3 lokasyon, ayrı hatlar) sitede hiç
+              kullanılmıyor.
+            </li>
+            <li>
+              Kendi metni:
+              <i>"gerçek doğruluk algoritmadan değil deneyimden gelir"</i> —
+              kendi değerleme aracına güvenmiyor.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              <b>Ulaşım süresi tabanlı arama</b> (TfL API) — yarıçap yerine "45
+              dk içinde".
+            </li>
+            <li>Postcode → ofis <b>routing</b>.</li>
+            <li>Değerlemeye AI açıklama — aracı "güvenilir" kılar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section data-title="Property Cloud">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">05</div>
+        <div class="site-name">Property Cloud</div>
+        <div class="domain">thepropertycloud.uk</div>
+        <div class="locale">Bexleyheath · İngiltere</div>
+        <p class="oneline">
+          Zengin medyaya yatırım — ama medya hiç değerlendirilmiyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Güçlü <b>Giraffe360 tur + drone video</b> var ama içeriği AI ile
+              hiç kullanılmıyor; Floor Plans sekmesi boş.
+            </li>
+            <li>
+              Aynı içerik (site + sosyal + portal) <b>3 kez elle</b> yazılıyor.
+            </li>
+            <li>
+              Instant valuation açıkça
+              <span class="hl">"%60'a kadar doğru"</span> diyor.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              <b>Görsel-farkında AI:</b> fotoğraftan öne çıkan özellik (bahçe,
+              yeni mutfak) otomatik çıkarımı.
+            </li>
+            <li>
+              <b>İçerik stüdyosu:</b> tek girdi → site açıklaması + portal
+              başlığı + sosyal post + alt-text (danışman onaylı).
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section data-title="Property Connections">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">06</div>
+        <div class="site-name">Property Connections</div>
+        <div class="domain">propertyconnections.uk.com</div>
+        <div class="locale">Bathgate · İskoçya</div>
+        <p class="oneline">Yanlış hukuki + coğrafi bağlam — en riskli site.</p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              İskoçya'da <b>İngiliz SDLT hesaplayıcı</b> çalışıyor (LBTT olmalı)
+              → yanlış vergi rakamı.<span class="flag">hukuki risk</span>
+            </li>
+            <li>
+              Contact haritası <b>~600 km yanlış</b> (Bathgate yerine Kent
+              gösteriyor).
+            </li>
+            <li>
+              Scottish Home Report (20–40 sayfa PDF) özetsiz indiriliyor;
+              "Offers Over" için alıcı rehberi yok.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              <b>Ülke-farkında kural motoru</b> (AI değil): postcode → doğru
+              vergi (SDLT/LBTT).
+            </li>
+            <li>
+              Build sırasında <b>geocode doğrulama</b> (Bathgate koordinatı
+              Kent'te olamaz).
+            </li>
+            <li>PDF rapor <b>LLM özetleyici</b> + risk bayraklama.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section data-title="Keystone">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">07</div>
+        <div class="site-name">Keystone</div>
+        <div class="domain">keystoneestateagents.co.uk</div>
+        <div class="locale">İngiltere</div>
+        <p class="oneline">
+          Zengin veri toplanıyor ama görünmez / kullanılmıyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Çalışmadaki <b>en zengin değerleme formu</b> — ama sadece talep
+              gönderiyor.
+            </li>
+            <li>
+              Sprift "Key Facts for Buyers" raporu "Media Links" akordeonuna
+              gömülü, <b>görünmez</b>.
+            </li>
+            <li>
+              Açılış saatleri hiçbir yerde yok; footer iki kez +
+              <span class="hl">NaN</span>.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Gömülü Sprift raporunu <b>öne çıkar</b> (ilan üstünde highlights).
+            </li>
+            <li>Form verisini <b>lead scoring</b>'e bağla (bekliyor).</li>
+            <li>Template NaN/footer bug fix.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section data-title="Jacksons">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">08</div>
+        <div class="site-name">Jacksons</div>
+        <div class="domain">jacksonsproperty.co.uk</div>
+        <div class="locale">Rainham · İngiltere</div>
+        <p class="oneline">
+          Mükemmel grounding içeriği — hiçbir şeyi beslemiyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              <b>"Advice Hub"</b> (rehberler, FAQ, alan rehberleri) çalışmadaki
+              en zengin destek içeriği — ama hiçbir interaktif özelliği
+              beslemiyor.
+            </li>
+            <li>Mortgage / stamp duty hesaplayıcıları çıplak sayı.</li>
+            <li>
+              Kaynakta <span class="hl">msgboxx</span> chat izi var ama arayüzde
+              görünmüyor.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Advice Hub'ı <b>RAG kaynağı</b> yap → ilan Q&amp;A + mesai dışı
+              chatbot grounding.
+            </li>
+            <li>
+              Hesaplayıcılara <b>sade dil yorumu</b> ("bu bütçen için ne
+              demek").
+            </li>
+            <li>Dormant chat bileşenini gerçek asistanla aç.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section data-title="Harris & Wood">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">09</div>
+        <div class="site-name">Harris &amp; Wood</div>
+        <div class="domain">harrisandwood.co.uk</div>
+        <div class="locale">Colchester · İngiltere</div>
+        <p class="oneline">Marka enerjisi güçlü, ürün deneyimi kırık.</p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Güçlü sosyal medya (TikTok/YouTube/IG)
+              <b>site aramasına hiç yansımıyor</b>.
+            </li>
+            <li>
+              <b>4 ayrı departman telefonu</b> — kullanıcı doğru numarayı tahmin
+              etmek zorunda.
+            </li>
+            <li>
+              Instant valuation formu <b>kırık</b>: URL hash geçersiz CSS
+              selector → <span class="hl">SyntaxError</span>.<span class="flag"
+                >bug</span
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li><b>Postcode → departman routing</b> + form ön-doldurma.</li>
+            <li>Değerleme formu selector bug fix.</li>
+            <li>Area/commute veri katmanı.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section data-title="Roderick Thomas">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">10</div>
+        <div class="site-name">Roderick Thomas</div>
+        <div class="domain">roderickthomas.co.uk</div>
+        <div class="locale">Somerset · İngiltere</div>
+        <p class="oneline">
+          "50 yıllık yerel bilgi" markası, sıfır yapılandırılmış veri.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Marka "yerel uzmanlık" diyor ama site
+              <b>hiç yapılandırılmış bölge verisi</b> sunmuyor.
+            </li>
+            <li>
+              Commute/mesafe <b>her ilana elle</b>:
+              <i>"Glastonbury 8 miles, Paddington 1.5 hours"</i>.
+            </li>
+            <li>EPC için ayrı sekme bile yok (tek satır metin).</li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              <b>Otomatik commute + area data</b> (Google Maps / Ofsted /
+              Environment Agency API).
+            </li>
+            <li>LLM sadece bu veriyi <b>özetler</b>, üretmez.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section data-title="Cope & Co">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">11</div>
+        <div class="site-name">Cope &amp; Co</div>
+        <div class="domain">copeandco.co.uk</div>
+        <div class="locale">İngiltere</div>
+        <p class="oneline">
+          Zengin medya + kötü varsayılanlar sonucu boş sonuç.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Varsayılan yarıçap <b>0.25 mil</b> → neredeyse boş sonuç, gevşetme
+              önerisi yok.
+            </li>
+            <li>
+              Gerçek Giraffe360 360° tur var ama <b>açıklamasız</b>; benzer ilan
+              bölümü yok.
+            </li>
+            <li>
+              SSTC/Let Agreed varsayılan dahil; sekme değişince kriter
+              sıfırlanıp sahte "0 sonuç".
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              <b>Sensible defaults:</b> yarıçap 3mi, SSTC hariç, "satılanı
+              gizle" toggle.
+            </li>
+            <li>State/URL-sync bug fix (AI katmanından önce).</li>
+            <li>NL arama yarıçap zihinsel modelini tümden bypass eder.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section data-title="Price">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">12</div>
+        <div class="site-name">Price</div>
+        <div class="domain">priceestateagents.uk</div>
+        <div class="locale">İngiltere</div>
+        <p class="oneline">
+          Varsayılan sıralama yeni alıcıyı en pahalı evle karşılıyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Varsayılan sıralama <b>"En Yüksek Fiyat"</b> — ilk kez ev alan en
+              pahalı evle karşılaşıyor.
+            </li>
+            <li>
+              Açıklama kalitesi ilanlar arası çok değişken (3 satır ↔ 3
+              paragraf).
+            </li>
+            <li>Mortgage hesaplayıcı var ama çıplak sayı.</li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Varsayılan sıralama <b>"En Alakalı"</b> — tek satır config fix.
+            </li>
+            <li><b>AI ilan özeti</b> kaliteyi tüm ilanlarda eşitler.</li>
+            <li>Hesaplayıcıya açıklama katmanı.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section data-title="Keys & Lee">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">13</div>
+        <div class="site-name">Keys &amp; Lee</div>
+        <div class="domain">keysandlee.co.uk</div>
+        <div class="locale">Croydon · İngiltere</div>
+        <p class="oneline">
+          Yanıltıcı "AI" etiketi + elle yazılan mesafe verisi.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              "100% MATCH" rozeti sadece <b>filtre uyumu</b> ama Grup D'de "AI"
+              olarak pazarlanıyor.<span class="flag">yanıltıcı etiket</span>
+            </li>
+            <li>
+              Mesafe elle: <i>"0.8 miles to Clockhouse primary"</i> — danışman
+              ne yazdıysa o.
+            </li>
+            <li>
+              Viewing formu takvim gösteriyor ama
+              <i>"bu görüntülemeyi onaylamaz"</i>.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Etiket çerçevesini <b>platform geneli düzelt</b> (dürüst
+              adlandırma).
+            </li>
+            <li>Maps-API doğrulamalı <b>area/commute katmanı</b>.</li>
+            <li>Gerçek Cal.com <b>rezervasyon</b> (sahte değil).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section data-title="Nicholsons">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">14</div>
+        <div class="site-name">Nicholsons</div>
+        <div class="domain">nicholsonsestateagents.co.uk</div>
+        <div class="locale">İngiltere</div>
+        <p class="oneline">En iyi altyapı örneği — ama tümü insan-only.</p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Neuron REST filter şeması telde açık (<span class="hl"
+                >property_types</span
+              >, <span class="hl">property_styles</span>,
+              <span class="hl">tenure_types</span>) — ama üstünde AI yok.
+            </li>
+            <li>
+              Gerçek Cal.com randevu + çalışan msgboxx WhatsApp widget var ama
+              <b>insan-only</b>.
+            </li>
+            <li>
+              Contact routing statik (Buy/Sell/Rent seçimi hiçbir şey
+              değiştirmiyor).
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Görünen şemayı <b>NL arama hedefi</b> yap — referans tenant.<span
+                class="flag win"
+                >altyapı hazır</span
+              >
+            </li>
+            <li>
+              Çalışan <b>WhatsApp kanalına AI qualifier/FAQ</b> katmanı — ucuz
+              kazanç.
+            </li>
+            <li>Cal.com'u viewing'lere yay.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section data-title="No.86">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">15</div>
+        <div class="site-name">No.86</div>
+        <div class="domain">no86estateagency.co.uk</div>
+        <div class="locale">İngiltere</div>
+        <p class="oneline">
+          AI için hazır girdi topluyor — sonra insan 24 saat bekletiyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              <b>"Virtual Valuation"</b> fotoğraf + tadilat + satış noktası
+              topluyor → insan <b>24 saatte manuel</b> rapor.
+            </li>
+            <li>
+              3 değerleme rotası (Instant / Virtual / Face-to-Face) ama hiçbiri
+              AI açıklaması taşımıyor.
+            </li>
+            <li>Heads Up qualification verisi sıralamaya yansımıyor.</li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Toplanan fotoğrafları <b>vision modele</b> ver → anlık ön-tahmin +
+              açıklama (insan onayı öncesi).
+            </li>
+            <li>Form verisi → <b>lead scoring</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section data-title="Beercocks">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">16</div>
+        <div class="site-name">Beercocks</div>
+        <div class="domain">beercocks.com</div>
+        <div class="locale">East Yorkshire · İngiltere</div>
+        <p class="oneline">
+          11 şube, 515 ilan — ama yönlendirme ve akıllı arama yok.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              <b>11 şube</b> ayrı listeli, postcode routing yok — kullanıcı
+              doğru ofisi kendi bulmalı.
+            </li>
+            <li><b>515 ilan</b> sadece filtre + "LOAD MORE" ile geziliyor.</li>
+            <li>
+              Instant Valuation ekranda rakam gösteriyor ("recent local sales")
+              ama <b>"neden" yok</b>.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li><b>Postcode → şube routing</b> + lead qualification.</li>
+            <li>NL arama / akıllı daraltma (515 ilan için kritik).</li>
+            <li>
+              Mevcut rakama <b>AI açıklama katmanı</b> (comparable + özellik).
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section data-title="Grey & Co">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">17</div>
+        <div class="site-name">Grey &amp; Co</div>
+        <div class="domain">greyandco.co.uk</div>
+        <div class="locale">Wembley · İngiltere</div>
+        <p class="oneline">
+          Hazır içerik + davranış verisi var, ikisi de boşa gidiyor.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Detaylı <b>bölge rehberleri</b> var (hazır grounding) ama hiçbir
+              AI'ı beslemiyor.
+            </li>
+            <li>
+              <span class="hl">ice.js</span> davranış topluyor ama
+              <b>kişiselleştirmeye dönüşmüyor</b>.
+            </li>
+            <li>
+              İlan sayfalarında benzer-ilan bölümü <b>hiç yok</b>; msgboxx
+              widget pasif.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Bölge rehberlerini <b>RAG kaynağı</b> yap → Area Q&amp;A / NL
+              arama.
+            </li>
+            <li>Davranış sinyallerini <b>ranking'e</b> çevir (embedding).</li>
+            <li>Benzer ilan bölümü ekle.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section data-title="Allen">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">18</div>
+        <div class="site-name">Allen</div>
+        <div class="domain">allen-residential.co.uk</div>
+        <div class="locale">Somerset · İngiltere</div>
+        <p class="oneline">Sorgu anlama zayıf — niyeti yanlış okuyor.</p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              <span class="hl">"Paultn"</span> → <b>"Paul Tann Ltd"</b> öneriyor
+              (Paulton bölgesi yerine firma adı).
+            </li>
+            <li>
+              Boş aramada sadece alert öneriyor; hangi filtreyi gevşeteceğini
+              söylemiyor.
+            </li>
+            <li>
+              Bristol/Bath ulaşım süreleri prose'ye elle yazılı; 3 şube routing
+              yok.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              <b>Fuzzy match + intent classifier</b> (öncelik: yer &gt; firma
+              &gt; kişi).
+            </li>
+            <li>Area/commute veri katmanı + branch routing.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section data-title="Browns">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">19</div>
+        <div class="site-name">Browns</div>
+        <div class="domain">brownsestateagents.co.uk</div>
+        <div class="locale">South Shields · İngiltere</div>
+        <p class="oneline">En ileri AI-benzeri özellik burada — ama sığ.</p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              Yüzde tabanlı <b>"prediction" match skoru</b> var ama
+              semantik/davranış değil, sadece kayıtlı kritere dayanıyor.
+            </li>
+            <li>
+              Değerleme Land Registry kullanıp dürüstçe
+              <i>"mülkün benzersizliğini hesaba katmaz"</i> diyor.
+            </li>
+            <li>
+              "3D Digital Twin/Matterport" iddiası ilan sayfalarında <b>yok</b>.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Mevcut match sistemini
+              <b>gerçek semantik + davranış</b> kişiselleştirmeye genişlet.<span
+                class="flag win"
+                >temel hazır</span
+              >
+            </li>
+            <li>Değerlemeye comparable-tabanlı <b>AI açıklama</b>.</li>
+            <li>Medya iddiasını düzelt (yoksa kaldır).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 20 -->
+  <section data-title="By Design">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">20</div>
+        <div class="site-name">By Design</div>
+        <div class="domain">bydesignhomes.com</div>
+        <div class="locale">İngiltere</div>
+        <p class="oneline">
+          Platform tezinin en net kanıtı: her şey var, hepsi kapalı.
+        </p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              <b>Chatbot + InstantValuation + StampDutyCalculator</b> üçü de
+              kaynakta var ama <b>pasif</b>.<span class="flag">dormant</span>
+            </li>
+            <li>"100% MATCH" kriter girilmese bile %100.</li>
+            <li>
+              Zengin <b>"Seller's Story" + "Location"</b> içeriği (£4.5M ilanda
+              bile) hiç kullanılmıyor.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Dormant bileşenleri <b>config ile aç</b> — arkasına gerçek asistan
+              bağlayarak (boş açma).
+            </li>
+            <li>
+              Seller's Story'yi <b>grounded özet + Q&amp;A</b> kaynağı yap.
+            </li>
+            <li>Match rozetini düzelt.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 -->
+  <section data-title="Courtyard">
+    <div class="site">
+      <div class="site-index">
+        <div class="num">21</div>
+        <div class="site-name">Courtyard</div>
+        <div class="domain">courtyardhomes.co.uk</div>
+        <div class="locale">İngiltere</div>
+        <p class="oneline">Kapanış sitesi — ve platform tezinin mührü.</p>
+      </div>
+      <div class="blocks">
+        <div class="block problem">
+          <div class="block-head"><span class="dot"></span>Sorun</div>
+          <ul>
+            <li>
+              "Quick Online Estimate" guide price üretiyor ama hangi
+              özellik/comparable'ın etkilediğini <b>açıklamıyor</b>.
+            </li>
+            <li>
+              Advice Hub içeriği statik; varsayılan yarıçap 0.25 mil dar;
+              Heads-Up sadece kriter-tabanlı.
+            </li>
+          </ul>
+        </div>
+        <div class="block solution">
+          <div class="block-head"><span class="dot"></span>Çözüm</div>
+          <ul>
+            <li>
+              Değerlemeye <b>AI açıklama</b> + Advice Hub'ı area Q&amp;A
+              grounding.
+            </li>
+            <li>Sensible defaults + semantik matching.</li>
+            <li>
+              <b>Kapanış tezi:</b> her tenant'ta aynı bileşenler var, fark
+              sadece hangisinin açık olduğu → bir kez inşa et, config ile yay.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENERAL PROBLEMS -->
+  <section data-title="Genel Sorunlar">
+    <p class="eyebrow">Sentez · 21 sitede tekrar eden</p>
+    <h2 class="big">Genel sorunlar</h2>
+    <p class="section-lede">
+      Site-özel bulguların altında 21/21'de tekrar eden platform-seviyesi
+      desenler. Sıralama etki × yaygınlık.
+    </p>
+    <div class="grid2">
+      <div class="card">
+        <h3><span class="gid">G1</span> Doğal dil araması yok</h3>
+        <p>
+          21/21 sitede aynı hata: her cümle adres sanılıp bloklanıyor (<i
+            >"Couldn't find the address"</i
+          >). Yazım/eş-anlam toleransı da yok (Paultn→firma).
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G2</span> Sahte kişiselleştirme</h3>
+        <p>
+          "100% MATCH" rozeti kriter girilmeden bile %100 (02, 06, 20…). Güven
+          kırılırsa eklenen gerçek AI'ı da beraberinde götürür.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G3</span> Değerleme: rakam var, gerekçe yok</h3>
+        <p>
+          Rakam gösteren siteler "neden"i açıklamıyor; birçoğu kendi aracına
+          güvenmediğini yazıyor (04, 08, 11 "%60-70").
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G4</span> Dormant bileşenler</h3>
+        <p>
+          Chatbot / InstantValuation / WhatsApp / calculator kaynakta yüklü,
+          arayüzde kapalı (20 en net; 01, 08, 11, 17, 18…).
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G5</span> Veri toplanıyor, kullanılmıyor</h3>
+        <p>
+          Heads-Up formu 21/21'de taşınma/avukat/mortgage topluyor → sıralamaya
+          hiç yansımıyor. Davranış verisi (ice.js) boşa gidiyor.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G6</span> AI özet / Q&amp;A hiç yok</h3>
+        <p>
+          Tüm ilanlar elle yazılı paragraf; özet yok, soru sorma yok (21/21).
+          Zengin kaynaklar (Advice Hub, Seller's Story) atıl.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G7</span> Mesai dışı yanıt yok</h3>
+        <p>
+          21/21'de tek out-of-hours chatbot yok; gece talebi sabaha kadar
+          bekliyor.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G8</span> Area / commute elle yazılıyor</h3>
+        <p>
+          Mesafe ve ulaşım her ilana danışman elinden giriliyor (10, 13, 18) —
+          otomatikleştirmeye en açık alan.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G9</span> Yayın öncesi veri denetimi yok</h3>
+        <p>
+          Başlık↔detay yatak/fiyat çelişkisi, NaN, kırık form, olmayan medya
+          iddiası (01, 03, 07, 09, 19).
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G10</span> Yanlış hukuki/coğrafi bağlam</h3>
+        <p>
+          İskoçya'da SDLT (06), 600km yanlış harita (06), kötü varsayılanlar
+          (11, 12, 21).
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G11</span> Randevu çoğunlukla sahte</h3>
+        <p>
+          Sadece 03 &amp; 14 gerçek Cal.com; diğerlerinde takvim var ama
+          <i>"onaylamaz"</i> uyarısı.
+        </p>
+      </div>
+      <div class="card">
+        <h3><span class="gid">G12</span> Çok-şube yönlendirmesi yok</h3>
+        <p>
+          16 (11 şube), 09 (4 hat), 18 (3 şube): postcode routing yok, kullanıcı
+          doğru ofisi kendi buluyor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENERAL TODO / ROADMAP -->
+  <section data-title="Genel Yapılacaklar">
+    <p class="eyebrow">
+      Yol haritası · Öncelik = az efor × yüksek etki × düşük risk
+    </p>
+    <h2 class="big">Genel yapılacaklar</h2>
+    <div class="roadmap">
+      <div class="step">
+        <div class="phase">Hafta 1–2<br />AI değil</div>
+        <div>
+          <h4>Config &amp; bug onarımı — güven onarımı</h4>
+          <p>
+            Sahte "100% MATCH" düzelt, dormant bileşenleri (arkası bağlıysa) aç,
+            NaN/footer/kırık-form fix, ülke-farkında vergi kuralları
+            (SDLT/LBTT), sensible defaults, postcode→şube routing.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="phase">Faz 1<br />Platform</div>
+        <div>
+          <h4>NL arama + sorgu anlama</h4>
+          <p>
+            LLM tool-calling → structured JSON → mevcut Neuron filter API
+            (14'teki şema hazır). Tek yazılır, 21×'te açılır. Fuzzy match +
+            intent classifier ekli.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="phase">Faz 2<br />Batch</div>
+        <div>
+          <h4>İlan özeti + Q&amp;A</h4>
+          <p>
+            İlan başına 1× üretilip saklanan özet (ölçek maliyeti yok) + RAG
+            tabanlı ilan Q&amp;A. Grounding: ilan alanları + tenant rehberleri
+            (08, 17, 20, 21 içeriği).
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="phase">Faz 3<br />Katman</div>
+        <div>
+          <h4>Değerleme açıklaması + area/commute data</h4>
+          <p>
+            Rakam zaten var — altına 3-faktör açıklama. Postcode →
+            Maps/Ofsted/Environment Agency API; LLM sadece özetler.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="phase">Faz 4<br />Sorumluluk</div>
+        <div>
+          <h4>Lead scoring + mesai dışı + gerçek randevu</h4>
+          <p>
+            Form + davranış verisi → skorla. Out-of-hours chatbot (aynı Q&amp;A
+            altyapısı). Cal.com'u 03 &amp; 14 template'inden yay.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="phase">Faz 5<br />Olgunlaşınca</div>
+        <div>
+          <h4>Vision + içerik stüdyosu</h4>
+          <p>
+            Fotoğraf/EPC/floor-plan açıklama (05, 15), tek girdiden çok-format
+            içerik üretimi (danışman onaylı).
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="guard">
+      <h3>Kritik korkuluklar</h3>
+      <ul>
+        <li>
+          <b>Misdescription en büyük hukuki risk:</b> her cevap ilan alanına
+          dayanacak, kaynak gösterilecek, bilinmiyorsa "bilmiyorum + danışmana
+          yönlendir".
+        </li>
+        <li>
+          Yayına giden hiçbir AI metni <b>danışman onayı</b> olmadan çıkmayacak.
+        </li>
+        <li>
+          Değerleme dili <b>tavsiye değil açıklama</b> — "şu fiyata satın"
+          yasak.
+        </li>
+        <li>
+          Lead skorlama GDPR: skor yönlendirir, kapıyı kapatmaz — düşük skorlu
+          lead sıraya alınır, elenmez.
+        </li>
+        <li>
+          <b>Eval harness</b> olmadan prompt değişikliği = sessiz bozulma. 21
+          siteden gerçek sorgularla altın küme zorunlu.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CLOSING / TOMORROW -->
+  <section data-title="Yarın">
+    <p class="eyebrow">Yarınki toplantı için</p>
+    <h2 class="big">Ekip aksiyonları</h2>
+    <p class="section-lede">
+      4 kişi 21 siteyi tek tek yeniden açarken bu sunum tartışma zemini. Her
+      site slaytındaki Sorun/Çözüm üzerinden ilerleyip şunları netleştirelim:
+    </p>
+    <div class="action-grid">
+      <div class="action">
+        <b>1 · Doğrula &amp; işaretle</b
+        ><span
+          >Her sitede sorunu canlı teyit et; hâlâ açık mı, düzelmiş mi not düş
+          (03 stats-counter gibi düzelenler var).</span
+        >
+      </div>
+      <div class="action">
+        <b>2 · "Buraya ne gelmeli" listesi</b
+        ><span
+          >Somut karar: buton / chatbot / açıklama / routing — hangi bileşen
+          nereye, hangi tenant'ta önce açılacak.</span
+        >
+      </div>
+      <div class="action">
+        <b>3 · Açık anlaşmazlıkları kapat</b
+        ><span
+          >Instant-valuation ekranda rakam gösteriyor mu? 08 (AI chat),
+          09/17/18/19 değerleme — round'lar çelişiyor, canlı bak.</span
+        >
+      </div>
+      <div class="action">
+        <b>4 · Bozuk veri / gönderilmeyen form</b
+        ><span
+          >09 kırık değerleme formu, çelişkili yatak sayıları, NaN footer —
+          kod-seviyesi bug listesini çıkar.</span
+        >
+      </div>
+      <div class="action">
+        <b>5 · Referans template seç</b
+        ><span
+          >03 &amp; 14 çalışan Cal.com, 14 açık filter şeması, 19 match skoru —
+          pilotu hangi site üstünde kuracağız.</span
+        >
+      </div>
+      <div class="action">
+        <b>6 · Önceliklendir</b
+        ><span
+          >Yol haritasındaki Hafta 1–2 config fix'lerinden başla — güven
+          onarımı, AI'dan önce.</span
+        >
+      </div>
+    </div>
+    <div class="footer-note">
+      Kaynak: sites/01–21 · 4 turlu inceleme + Ağustos 2026 canlı doğrulama ·
+      solution/eksikler-ve-cozumler.md
+    </div>
+  </section>
+</main>
+
+<div class="hint">← / → · ↑ / ↓ · Home / End</div>
+<nav class="nav" aria-label="Slayt navigasyonu">
+  <button id="prev" title="Önceki (←)" aria-label="Önceki slayt">↑</button>
+  <button id="next" title="Sonraki (→)" aria-label="Sonraki slayt">↓</button>
+</nav>
+
+<script>
+  const deck = document.getElementById('deck');
+  const sections = Array.from(deck.querySelectorAll('section'));
+  const total = sections.length;
+  document.getElementById('tot').textContent = String(total).padStart(2, '0');
+
+  // build agenda from site slides (data-title, those with a .num)
+  const agenda = document.getElementById('agenda');
+  sections.forEach((s, i) => {
+    const num = s.querySelector('.num');
+    if (!num) return;
+    const name = s.querySelector('.site-name').textContent;
+    const a = document.createElement('a');
+    a.innerHTML =
+      '<span class="an">' +
+      num.textContent +
+      '</span><span>' +
+      name +
+      '</span>';
+    a.href = '#';
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      s.scrollIntoView();
+    });
+    agenda.appendChild(a);
+  });
+
+  let current = 0;
+  const prog = document.getElementById('prog');
+  const cur = document.getElementById('cur');
+  function update() {
+    prog.style.width = ((current + 1) / total) * 100 + '%';
+    cur.textContent = String(current + 1).padStart(2, '0');
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          current = sections.indexOf(en.target);
+          update();
+        }
+      });
+    },
+    { root: deck, threshold: 0.55 },
+  );
+  sections.forEach((s) => io.observe(s));
+
+  function go(n) {
+    current = Math.max(0, Math.min(total - 1, n));
+    sections[current].scrollIntoView();
+  }
+  document
+    .getElementById('next')
+    .addEventListener('click', () => go(current + 1));
+  document
+    .getElementById('prev')
+    .addEventListener('click', () => go(current - 1));
+  window.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'A') return;
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) {
+      e.preventDefault();
+      go(current + 1);
+    } else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) {
+      e.preventDefault();
+      go(current - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      go(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      go(total - 1);
+    }
+  });
+  update();
+</script>
