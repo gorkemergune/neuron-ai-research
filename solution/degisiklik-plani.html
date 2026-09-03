@@ -1,0 +1,671 @@
+<title>21 Site, 10 Değişiklik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#F6F7F5; --surface:#FFFFFF; --surface-2:#EDEFEB;
+  --ink:#16211F; --ink-2:#3D4A46; --muted:#6E7C77;
+  --rule:#D9DDD7; --rule-strong:#BFC7C1;
+  --accent:#1F5C4A; --accent-soft:#E4EDE8; --accent-ink:#164436;
+  --critical:#A8321E; --critical-soft:#F7E7E2;
+  --warn:#8A6410; --warn-soft:#F4EDDB;
+  --shadow:0 1px 2px rgba(22,33,31,.05), 0 8px 24px -16px rgba(22,33,31,.25);
+  --f-disp:"Libre Franklin",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121615; --surface:#1A201E; --surface-2:#232B28;
+    --ink:#E9EEEA; --ink-2:#BAC5C0; --muted:#8B9A94;
+    --rule:#2C3532; --rule-strong:#3C4642;
+    --accent:#74C3A2; --accent-soft:#1C2E27; --accent-ink:#8FD3B6;
+    --critical:#E8866D; --critical-soft:#31201B; --warn:#D6AC57; --warn-soft:#2C2717;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121615; --surface:#1A201E; --surface-2:#232B28;
+  --ink:#E9EEEA; --ink-2:#BAC5C0; --muted:#8B9A94;
+  --rule:#2C3532; --rule-strong:#3C4642;
+  --accent:#74C3A2; --accent-soft:#1C2E27; --accent-ink:#8FD3B6;
+  --critical:#E8866D; --critical-soft:#31201B; --warn:#D6AC57; --warn-soft:#2C2717;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1000px; margin:0 auto; padding:0 24px 96px}
+.col{max-width:70ch}
+
+/* ---- masthead ---- */
+header.mast{
+  border-bottom:2px solid var(--ink); margin-bottom:40px;
+  padding:56px 0 26px;
+}
+.eyebrow{
+  font-family:var(--f-mono); font-size:11.5px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+  display:flex; flex-wrap:wrap; gap:8px 14px; margin-bottom:22px;
+}
+.eyebrow span:not(:last-child)::after{content:"  ·"; color:var(--rule-strong)}
+h1{
+  font-family:var(--f-disp); font-weight:800; font-size:clamp(2.1rem,5.2vw,3.4rem);
+  line-height:1.04; letter-spacing:-.022em; margin:0 0 20px; text-wrap:balance;
+}
+.standfirst{
+  font-size:1.16rem; color:var(--ink-2); margin:0; max-width:62ch;
+}
+.standfirst strong{color:var(--ink); font-weight:600}
+
+/* ---- thesis ---- */
+.thesis{
+  background:var(--accent-soft); border-left:3px solid var(--accent);
+  padding:22px 26px; margin:0 0 44px; border-radius:0 6px 6px 0;
+}
+.thesis p{margin:0 0 10px; color:var(--accent-ink)}
+.thesis p:last-child{margin:0}
+.thesis strong{font-weight:600}
+
+/* ---- headings ---- */
+h2{
+  font-family:var(--f-disp); font-weight:700; font-size:1.62rem;
+  letter-spacing:-.014em; line-height:1.2; margin:64px 0 6px; text-wrap:balance;
+  padding-top:22px; border-top:1px solid var(--rule);
+}
+h2 .num{
+  font-family:var(--f-mono); font-size:.78em; font-weight:600;
+  color:var(--accent); margin-right:.5em;
+}
+h3{
+  font-family:var(--f-disp); font-weight:600; font-size:1.13rem;
+  letter-spacing:-.006em; margin:34px 0 8px; text-wrap:balance;
+}
+h4{
+  font-family:var(--f-mono); font-weight:600; font-size:.76rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+  margin:24px 0 8px;
+}
+.sec-note{
+  font-family:var(--f-disp); font-size:.92rem; color:var(--muted);
+  margin:0 0 24px;
+}
+p{margin:0 0 15px}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px}
+strong{font-weight:600}
+em{font-style:italic}
+
+/* ---- chips ---- */
+.site{
+  font-family:var(--f-mono); font-size:.8em; font-weight:600;
+  background:var(--surface-2); color:var(--ink-2); border:1px solid var(--rule);
+  padding:1px 6px; border-radius:4px; white-space:nowrap;
+}
+.tag{
+  display:inline-block; font-family:var(--f-mono); font-size:10.5px; font-weight:600;
+  letter-spacing:.07em; text-transform:uppercase; padding:3px 8px; border-radius:3px;
+  vertical-align:2px;
+}
+.t-crit{background:var(--critical-soft); color:var(--critical)}
+.t-warn{background:var(--warn-soft); color:var(--warn)}
+.t-ok{background:var(--accent-soft); color:var(--accent-ink)}
+
+/* ---- evidence ---- */
+.ev{
+  background:var(--surface); border:1px solid var(--rule); border-radius:6px;
+  padding:18px 22px; margin:18px 0; box-shadow:var(--shadow);
+}
+.ev.crit{border-left:3px solid var(--critical)}
+.ev.ok{border-left:3px solid var(--accent)}
+.ev.warn{border-left:3px solid var(--warn)}
+.ev h4{margin-top:0}
+.ev ul{margin:0}
+.ev p:last-child, .ev ul:last-child{margin-bottom:0}
+
+ul,ol{margin:0 0 15px; padding-left:22px}
+li{margin-bottom:7px}
+li::marker{color:var(--muted)}
+
+blockquote{
+  margin:18px 0; padding:14px 20px; border-left:2px solid var(--rule-strong);
+  color:var(--ink-2); font-style:italic;
+}
+blockquote p:last-child{margin:0}
+
+pre{
+  font-family:var(--f-mono); font-size:12.5px; line-height:1.6;
+  background:var(--surface-2); border:1px solid var(--rule); border-radius:5px;
+  padding:14px 16px; overflow-x:auto; margin:14px 0; color:var(--ink-2);
+}
+code{font-family:var(--f-mono); font-size:.86em; background:var(--surface-2);
+  padding:1px 5px; border-radius:3px; border:1px solid var(--rule)}
+pre code{background:none; border:none; padding:0; font-size:1em}
+
+/* ---- tables ---- */
+.scroll{overflow-x:auto; margin:22px 0; border:1px solid var(--rule);
+  border-radius:6px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-family:var(--f-disp);
+  font-size:14.5px; min-width:520px}
+th{
+  text-align:left; font-weight:600; font-size:11.5px; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--muted); font-family:var(--f-mono);
+  padding:12px 14px; border-bottom:1px solid var(--rule-strong); white-space:nowrap;
+}
+td{padding:11px 14px; border-bottom:1px solid var(--rule); vertical-align:top;
+  font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+td.n{font-family:var(--f-mono); font-weight:600; color:var(--accent); white-space:nowrap}
+
+/* ---- phases ---- */
+.phase{
+  background:var(--surface); border:1px solid var(--rule); border-radius:6px;
+  padding:20px 24px; margin-bottom:14px; box-shadow:var(--shadow);
+  display:grid; grid-template-columns:auto 1fr; gap:4px 20px; align-items:baseline;
+}
+.phase .p-n{
+  font-family:var(--f-mono); font-weight:600; font-size:12px; letter-spacing:.08em;
+  color:var(--paper); background:var(--accent); padding:4px 9px; border-radius:3px;
+  grid-row:1/3; align-self:start;
+}
+.phase h3{margin:0; grid-column:2}
+.phase .p-body{grid-column:2}
+.phase .p-when{font-family:var(--f-mono); font-size:12px; color:var(--muted);
+  display:block; margin-bottom:8px}
+.phase p{margin:0; font-size:.95rem; color:var(--ink-2)}
+.phase .p-kick{margin-top:10px; font-family:var(--f-disp); font-size:.88rem;
+  color:var(--accent-ink); background:var(--accent-soft); padding:8px 12px;
+  border-radius:4px}
+
+/* ---- guardrails ---- */
+.rails{counter-reset:r; list-style:none; padding:0; margin:22px 0 0}
+.rails li{
+  counter-increment:r; position:relative; padding:14px 0 14px 42px;
+  border-bottom:1px solid var(--rule); margin:0;
+}
+.rails li:last-child{border-bottom:none}
+.rails li::before{
+  content:counter(r); position:absolute; left:0; top:15px;
+  font-family:var(--f-mono); font-size:11px; font-weight:600; color:var(--critical);
+  background:var(--critical-soft); width:24px; height:24px; border-radius:50%;
+  display:grid; place-items:center;
+}
+
+footer{margin-top:72px; padding-top:24px; border-top:1px solid var(--rule);
+  font-family:var(--f-disp); font-size:.86rem; color:var(--muted)}
+
+@media (max-width:620px){
+  body{font-size:16px}
+  .wrap{padding:0 18px 64px}
+  .phase{grid-template-columns:1fr}
+  .phase .p-n{grid-row:auto; justify-self:start; margin-bottom:8px}
+  .phase h3,.phase .p-body{grid-column:1}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">
+    <span>Neuron platform analizi</span><span>21 site · 4 tur inceleme</span><span>Eylül 2026</span>
+  </div>
+  <h1>Analizler sonrası<br>değişmesi gerekenler</h1>
+  <p class="standfirst">Ekibin belirlediği <strong>6 değişiklik</strong>, site site kanıtları ve doğrudan çözümleriyle — artı analizden çıkan, listede olmayan <strong>4 kritik madde</strong>.</p>
+</header>
+
+<div class="col">
+<div class="thesis">
+  <p>21 site bugün <strong>veri topluyor ama işlemiyor, rakam üretiyor ama açıklamıyor, formu gösteriyor ama randevuya çevirmiyor.</strong> Aşağıdaki her madde bu üç boşluktan birini kapatıyor.</p>
+  <p>Ve en önemlisi: bunlar 21 ayrı sitenin 21 ayrı sorunu değil. Hepsi <strong>aynı platformun aynı varsayılanı.</strong> Bir kez düzeltilir, 21 kez açılır.</p>
+</div>
+</div>
+
+<h2>Öncelik özeti</h2>
+<p class="sec-note col">Sıralama kanıt gücü, maliyet ve risk birlikte değerlendirilerek yapıldı.</p>
+
+<div class="scroll">
+<table>
+<thead><tr><th></th><th>Değişiklik</th><th>Kanıt gücü</th><th>AI gerekli mi?</th><th>Süre</th><th>Faz</th></tr></thead>
+<tbody>
+<tr><td class="n">3</td><td>Randevu / değerleme butonları</td><td><strong>Çok güçlü</strong> — kırık form + 8 site</td><td>Hayır</td><td>1–3 hafta</td><td class="n">Faz 1</td></tr>
+<tr><td class="n">A</td><td>Sahte “100% MATCH” rozeti</td><td><strong>Çok güçlü</strong> — 6 site, sayısal</td><td>Hayır</td><td>1 hafta</td><td class="n">Faz 1</td></tr>
+<tr><td class="n">C</td><td>Hukuki / coğrafi hata</td><td><strong>Çok güçlü</strong> — SDLT/LBTT</td><td>Hayır</td><td>1 hafta</td><td class="n">Faz 1</td></tr>
+<tr><td class="n">6</td><td>Varsayılanlar + tema hataları</td><td>Güçlü</td><td>Hayır</td><td>1–2 hafta</td><td class="n">Faz 1</td></tr>
+<tr><td class="n">1</td><td>Zillow tarzı filtreleme</td><td><strong>Çok güçlü</strong> — 21/21</td><td>Kısmen</td><td>3–6 hafta</td><td class="n">Faz 2</td></tr>
+<tr><td class="n">2</td><td>Haritada konum + bölge verisi</td><td>Güçlü</td><td>Özetleme hariç hayır</td><td>2–8 hafta</td><td class="n">Faz 2</td></tr>
+<tr><td class="n">B</td><td>Değerleme açıklaması</td><td><strong>Çok güçlü</strong> — 10 site</td><td>Evet</td><td>4–6 hafta</td><td class="n">Faz 3</td></tr>
+<tr><td class="n">5</td><td>Chatbot (RAG)</td><td><strong>Çok güçlü</strong> — 21/21</td><td>Evet</td><td>6–10 hafta</td><td class="n">Faz 3</td></tr>
+<tr><td class="n">D</td><td>Toplanan verinin kullanılması</td><td>Güçlü — 21/21 form</td><td>Evet</td><td>8–12 hafta</td><td class="n">Faz 4</td></tr>
+<tr><td class="n">4</td><td>Marka metni / About us</td><td>Orta — nüans var</td><td>Evet</td><td>4–6 hafta</td><td class="n">Faz 4</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<p><strong>Neden bu sıra:</strong> Faz 1'in tamamı AI değil — bug ve config işi. Sahte rozet dururken üstüne AI eklemek, güven kırıldığında AI'ı da beraberinde götürür.</p>
+</div>
+
+<h2><span class="num">01</span>Zillow tarzı filtreleme gelmeli</h2>
+<div class="col">
+<p><strong>Bugün ne var:</strong> 21 sitenin tamamında aynı filtre seti — fiyat aralığı + min/max yatak odası + konum yarıçapı (0–40 mil). Bitti.</p>
+
+<div class="ev crit">
+<h4>Ne yok</h4>
+<ul>
+<li>Mülk tipi filtresi yok — <span class="site">01</span> <span class="site">02</span> <span class="site">03</span> <span class="site">04</span> <span class="site">05</span> <span class="site">07</span>, hepsi</li>
+<li>Anahtar kelime yok, serbest metin yok, harita tabanlı arama yok — Grup A'nın tamamı “sadece liste görünümü”</li>
+<li><strong>Yazım toleransı yok:</strong> <code>"Paultn"</code> → <strong>“Paul Tann Ltd”</strong> <span class="site">18</span> <span class="site">16</span> — Paulton kasabası yerine firma adı. <code>"Sheilds"</code> → <strong>“SHEilds Ltd”</strong> <span class="site">19</span> — South Shields yerine eğitim firması</li>
+<li><strong>Doğal dil bloke:</strong> <em>“3 bed with garage under £400k in Rainham”</em> <span class="site">08</span>, <em>“2 bed flat near Gilberd School under £200k”</em> <span class="site">09</span>, <em>“4 bed eco home near Castle Cary”</em> <span class="site">10</span> → hepsi <strong>“Couldn't find the address”</strong></li>
+</ul>
+</div>
+
+<div class="ev warn">
+<h4>Kötü varsayılanlar da sorunun parçası</h4>
+<ul>
+<li><span class="site">11</span> <span class="site">21</span> Varsayılan yarıçap <strong>0.25 mil</strong> → kasaba araması neredeyse boş sayfa, uyarı yok</li>
+<li><span class="site">12</span> Varsayılan sıralama <strong>“Highest Price”</strong> → ilk kez ev alan kullanıcı en pahalı evle karşılaşıyor</li>
+<li><span class="site">11</span> SSTC / Let Agreed ilanlar varsayılan olarak sonuçlara dahil</li>
+</ul>
+</div>
+
+<h3>Çözüm — iki katman</h3>
+<p><strong>Katman 1 · AI değil, hafta 1–3.</strong> Klasik filtre setini genişlet: mülk tipi, tenure, mülk stili, anahtar kelime, harita alanı, ulaşım süresi.</p>
+
+<div class="ev ok">
+<h4>Önemli bulgu</h4>
+<p><span class="site">14</span> Nicholsons'ta şema <strong>zaten telde</strong> — <code>property_types</code>, <code>property_styles</code>, <code>tenure_types</code>. Yani backend hazır, arayüzde açık değil. Bu bir geliştirme değil, bir <strong>config işi</strong>.</p>
+</div>
+
+<p>Sensible defaults: yarıçap 3 mil, sıralama “Most Relevant”, SSTC hariç.</p>
+
+<p><strong>Katman 2 · AI, hafta 3–6.</strong> Üstüne doğal dil katmanı.</p>
+<ul>
+<li><strong>Ne:</strong> LLM tool-calling + structured JSON output</li>
+<li><strong>Nasıl:</strong> Küçük hızlı model (Haiku / Gemini Flash sınıfı). <em>“okula yakın 3 yatak £300k altı”</em> → <code>{beds:3, max_price:300000, tags:["school"]}</code> → mevcut filtre API'sine geçir</li>
+<li><strong>Neden güvenli:</strong> Model bilgi üretmiyor, sadece cümleyi API parametresine çeviriyor. Halüsinasyon riski minimum, JSON çıktısı regresyon testiyle ölçülebilir</li>
+<li><strong>Fuzzy katmanı:</strong> Elasticsearch/Typesense + öncelik sırası (yer &gt; firma &gt; kişi) + “şunu mu demek istediniz?” önerisi</li>
+</ul>
+
+<p><strong>Dünya örneği:</strong> Zillow 2023'te doğal dil aramasını açtı, 2024'te genişletti. Rightmove <strong>AI Keyword Sort</strong> ilan görselleri ve metnindeki eşleşmeleri sıralamaya katıyor. Zoopla <strong>smart tags</strong> ile klasik filtrelerde olmayan özellikleri aramaya ekliyor.</p>
+</div>
+
+<h2><span class="num">02</span>Haritada konum gösterme</h2>
+<div class="col">
+<div class="ev crit">
+<h4>Bugün ne var — karışık ve tutarsız</h4>
+<ul>
+<li>Arama sonuçlarında harita <strong>hiçbir sitede yok</strong> — sadece liste görünümü</li>
+<li>İlan sayfasında harita bazı sitelerde var <span class="site">02</span> <span class="site">03</span> <span class="site">06</span>, ama gösterilen noktalar <strong>Google'ın kendi POI verisi</strong> — okul, ulaşım, suç, demografi yorumu yok</li>
+<li><span class="site">06</span> Property Connections: iletişim haritası <strong>600 km yanlış</strong> — Bathgate (İskoçya) yerine Folkestone/Kent gösteriyor</li>
+</ul>
+</div>
+
+<div class="ev warn">
+<h4>Bölge bilgisi elle yazılıyor</h4>
+<ul>
+<li><span class="site">10</span> Her ilana tek tek <em>“Glastonbury 8 miles, Paddington 1.5 hours, A303 3.5 miles (approximate)”</em></li>
+<li><span class="site">13</span> <em>“0.8 miles to Clockhouse primary school”</em> elle</li>
+<li><span class="site">18</span> Bristol/Bath ulaşım süreleri ilan metnine gömülü</li>
+<li><span class="site">04</span> Londra'da yarıçap filtresi — ama Londralı alıcı “Central line'a yürüme mesafesi” diye düşünüyor, “2 mil yarıçap” diye değil</li>
+</ul>
+</div>
+
+<h3>Çözüm</h3>
+<p><strong>a) Arama sonuçlarına harita görünümü</strong> <em>(hafta 2–4)</em> — liste ↔ harita geçişi, haritada alan çizerek arama.</p>
+<p><strong>b) İlan sayfasına otomatik bölge katmanı</strong> <em>(hafta 4–8)</em> — postcode → API katmanı:</p>
+</div>
+
+<div class="scroll" style="max-width:70ch">
+<table>
+<thead><tr><th>Veri</th><th>Kaynak</th></tr></thead>
+<tbody>
+<tr><td>Ulaşım süresi</td><td>Google Maps / TfL API</td></tr>
+<tr><td>Okul</td><td>Ofsted API (İngiltere) + Education Scotland</td></tr>
+<tr><td>Sel riski</td><td>Environment Agency flood risk API</td></tr>
+<tr><td>Broadband</td><td>Ofcom</td></tr>
+<tr><td>Çevre (market, park, restoran)</td><td>Google Places</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<p>LLM burada <strong>veri üretmiyor, sadece özetliyor:</strong></p>
+<blockquote><p>“Bu mülk Liverpool Street'e yaklaşık 35 dakika. Yakın çevrede üç ilkokul ve 10 dakika yürüme mesafesinde iki market var.”</p></blockquote>
+<p><strong>c) Build sırasında geocode doğrulaması</strong> — Bathgate koordinatı Kent'te olamaz. Tek satırlık bir kontrol, <span class="site">06</span>'daki hatayı bir daha yaşatmaz.</p>
+<p><strong>d) Londra tenant'ları için ulaşım süresi filtresi</strong> (yarıçap yerine) — TfL API ile.</p>
+</div>
+
+<h2><span class="num">03</span>“Book a valuation / Randevu al” butonları çalışmıyor</h2>
+<p class="sec-note col">Bu maddeyi listenin başına almanı öneriyorum. Kanıtı en net, maliyeti en düşük, etkisi doğrudan gelir.</p>
+
+<div class="col">
+<h3>3a · Gerçekten kırık form <span class="tag t-crit">Kırık</span></h3>
+<p><span class="site">09</span> Harris + Wood — canlı test edildi (<code>CO4 6AZ</code> → 13 Cordelia Drive). Değerleme akışı son adımda <strong>tamamen kırık:</strong></p>
+
+<pre><code>Uncaught (in promise) SyntaxError: Failed to execute 'querySelector'
+on 'Document': '#2' is not a valid selector
+(DGx-v1bZ.js:4:13837, scrollBehavior)</code></pre>
+
+<p>URL hash'i (<code>#2</code>) CSS selector olarak kullanılıyor. CSS'te ID rakamla başlayamayacağı için hata düşüyor ve <strong>gönderim zinciri kesiliyor.</strong> Geçerli UK cep numaraları defalarca denendi, hepsinde <em>“Please enter a valid phone number”</em> hatası alındı.</p>
+
+<div class="ev crit">
+<p><em>“Takes about 60 seconds. No obligation.”</em> diyen araç, sonucu göstermeden önce ad/soyad/e-posta/telefon zorunlu tutuyor — <strong>ve o formu gönderemiyor.</strong> Değerleme sayfasının tek amacı lead toplamak; lead formu çalışmıyor. Çalışmadaki <strong>en yüksek maliyetli tek hata.</strong></p>
+</div>
+
+<h3>3b · Çalışıyor ama randevu değil — 8 site <span class="tag t-crit">Sahte</span></h3>
+<p>Şu 8 sitede randevu modalı açıkça yazıyor: <strong>“This does not confirm the viewing”</strong></p>
+<p><span class="site">02</span> <span class="site">03</span> <span class="site">04</span> <span class="site">08</span> <span class="site">09</span> <span class="site">10</span> <span class="site">13</span> <span class="site">16</span></p>
+<p>Yani kullanıcı tarih ve saat seçiyor, buton basıyor, <strong>hiçbir şey rezerve olmuyor.</strong> Bu bir randevu sistemi değil, süslenmiş bir talep formu. <span class="site">08</span> Jacksons'ta metin daha da açık: <em>“We'll confirm availability for you. (This does not confirm the viewing)”</em></p>
+
+<h4>Kritik ayrım — değerleme randevusu ≠ görüntüleme randevusu</h4>
+</div>
+
+<div class="scroll" style="max-width:70ch">
+<table>
+<thead><tr><th>Site</th><th>Değerleme randevusu</th><th>Görüntüleme randevusu</th></tr></thead>
+<tbody>
+<tr><td><span class="site">03</span> Harrisons</td><td><span class="tag t-ok">Gerçek</span> Cal.com, danışman bazlı, 1 saatlik slot</td><td><span class="tag t-crit">Sahte</span> “does not confirm”</td></tr>
+<tr><td><span class="site">14</span> Nicholsons</td><td><span class="tag t-ok">Gerçek</span> Cal.com takvimi</td><td><span class="tag t-crit">Yok</span> otomatik değil</td></tr>
+<tr><td>Diğer 19 site</td><td><span class="tag t-crit">Form</span></td><td><span class="tag t-crit">Form</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<p>Yani <strong>çalışan altyapı tek bir akışta var (değerleme), diğerine hiç bağlanmamış.</strong> <span class="site">03</span>'te aynı Cal.com entegrasyonu görüntüleme randevusuna da bağlanabilirdi — bağlanmamış. Bu bir geliştirme değil, bir bağlantı işi.</p>
+
+<div class="ev warn">
+<h4>Diğer varyantlar</h4>
+<ul>
+<li><span class="site">05</span> <em>“does not confirm”</em> yazısı bile yok — “Book a viewing” ve değerleme formları hiç müsaitlik göstermiyor, doğrudan talep gönderiyor</li>
+<li><span class="site">12</span> Gün/saat <strong>serbest metinle yazılıyor</strong> — takvim yok, müsaitlik yok</li>
+<li><span class="site">16</span> Müsaitlik hiç göstermiyor, form-only</li>
+<li><span class="site">17</span> Takvim var, teyitli müsaitlik yok</li>
+<li><span class="site">11</span> Takvim gerçek müsaitliği göstermiyor + iletişim formu 7+ alan istiyor</li>
+<li><span class="site">20</span> <code>InstantValuation</code> bileşeni kaynakta yüklü, <strong>kapatılmış</strong></li>
+<li><span class="site">15</span> Virtual Valuation fotoğraf + tadilat + satış noktası topluyor → sonra <strong>bir insan 24 saat içinde elle rapor yazıyor</strong></li>
+</ul>
+</div>
+
+<h3>3c · Çalışan iki örnek — kopyalanacak şablon bu <span class="tag t-ok">Çalışıyor</span></h3>
+<div class="ev ok">
+<p><span class="site">03</span> ve <span class="site">14</span>'te gerçek rezervasyon çalışıyor — ve sadece değerleme randevusunda. Cal.com entegrasyonu canlı doğrulandı: <em>“Sales market appraisal – Chris,” 25 Ağustos 2026, 15:00–16:00, 1 saat, yüz yüze, danışman bazlı gerçek müsaitlik.</em></p>
+<p><span class="site">19</span> Browns'ta 24/7 self-service booking var (rule-based) — altyapı olarak en ileri nokta, sadece önceliklendirme yok.</p>
+</div>
+
+<h4>Çözüm</h4>
+<ol>
+<li><span class="site">09</span>'daki <strong>JS hatasını acil düzelt</strong> — bu bir bug değil, doğrudan gelir kaybı. Süre: gün.</li>
+<li><span class="site">03</span>/<span class="site">14</span>'teki çalışan Cal.com entegrasyonunu <strong>platform şablonu yap</strong> → 21 tenant'a aç. AI gerektirmiyor. Süre: 1–3 hafta.</li>
+<li>Onay maili + takvim daveti + danışman bildirimi.</li>
+<li><strong>Sonra</strong> tool-calling ile AI asistanın çağırabileceği fonksiyon haline getir: <code>book_viewing(property_id, slot)</code> → chatbot sadece konuşmasın, gerçekten rezervasyon yapsın.</li>
+</ol>
+</div>
+
+<h2><span class="num">04</span>About us kısımları ilgi çekici değil</h2>
+<div class="col">
+<div class="ev warn">
+<h4>Dürüst not</h4>
+<p>Site analizlerinde “about us kötü” diye bir bulgu <strong>yok</strong> — tersine marka ve güven tarafı çoğu sitede <strong>“İyi”</strong> değerlendirilmiş: <span class="site">02</span> maskot + gerçek ekip (Nigel) + Google yorumları + TPO/Money Shield rozetleri; <span class="site">08</span> 15+ yorum + isimli ekip + Propertymark/TPO; <span class="site">10</span> isimli ekip (Bridget/Lizzie/Harry) + şirket kaydı.</p>
+</div>
+
+<p><strong>Ama bulunan gerçek sorun şu — ve bu daha savunulabilir bir argüman:</strong> metinler şablon.</p>
+
+<div class="ev crit">
+<ul>
+<li><span class="site">08</span> Jacksons ana sayfasındaki <em>“A Different Kind of Estate Agency”</em> ifadesi, <span class="site">06</span> Property Connections ile <strong>birebir aynı şablon metni.</strong> İki farklı acente, iki farklı şehir, tek cümle. “Farklı bir emlak acentesi” diyen cümlenin kendisi kopya.</li>
+<li><span class="site">19</span> Ana sayfada <em>“3D Digital Twin / Matterport”</em> iddiası var, <strong>ilan sayfalarında hiç görünmüyor</strong> — doğrulanmamış iddia.</li>
+<li><span class="site">03</span> Ana sayfada güçlü istatistikler var, <strong>ilan sayfalarına hiç yansımıyor.</strong></li>
+<li><span class="site">01</span> <span class="site">07</span> Footer iki kez render ediliyor, ikinci blokta <em>“Company Number: NaN”</em>.</li>
+</ul>
+</div>
+
+<h4>Çözüm</h4>
+<ul>
+<li><strong>Ne:</strong> Tenant başına farklılaştırılmış marka metni — LLM + <strong>zorunlu danışman onay paneli</strong></li>
+<li><strong>Nasıl:</strong> Tek girdi (acentenin gerçek verileri: kuruluş yılı, şube, satış sayısı, ekip) → çıktı: about metni + ilan sayfası güven bloğu + sosyal bio. Aynı altyapı içerik stüdyosuyla ortak.</li>
+<li><strong>Yayın öncesi iddia denetimi:</strong> “Matterport” diyorsan gerçekten var mı? Kural motoru kontrol etsin.</li>
+<li><strong>Ana sayfa istatistiklerini ilan sayfasına taşı</strong> — güven ilanı görürken lazım, hakkımızda sayfasında değil.</li>
+</ul>
+
+<div class="ev ok">
+<h4>Toplantı tavsiyesi</h4>
+<p>Bunu “about us güzelleştirelim” diye sunma — kanıtın yok, karşı taraf “bizimki iyi zaten” der. <strong>“Şablon aynılığı ve doğrulanmamış iddia”</strong> diye sun — iki somut kanıtın var.</p>
+</div>
+</div>
+
+<h2><span class="num">05</span>Chatbot — NLP</h2>
+<div class="col">
+<p><strong>Bugün ne var: 21/21 sitede çalışan chatbot yok.</strong> Mesai dışı hiçbir yanıt yok.</p>
+
+<div class="ev warn">
+<h4>Ama bileşen zaten platformda</h4>
+<ul>
+<li><code>whatsapp-chatbot</code> / <code>msgboxx</code> bundle <strong>kaynakta yüklü, DOM'da yok:</strong> <span class="site">01</span> <span class="site">04</span> <span class="site">07</span> <span class="site">08</span> <span class="site">11</span> <span class="site">12</span> <span class="site">17</span> <span class="site">18</span></li>
+<li><span class="site">20</span> By Design: Chatbot + InstantValuation + StampDutyCalculator <strong>üçü birden pasif</strong> — platform tezinin en net kanıtı</li>
+<li><span class="site">07</span> Keystone: <em>“24/7 buradayız”</em> vaat ediyor, çalışma saatleri 9–17 ve Pazar kapalı</li>
+</ul>
+</div>
+
+<h3>Çözüm — RAG, fine-tune değil</h3>
+<p><strong>Neden fine-tune değil:</strong> İlan verisi sürekli değişiyor. Model ağırlığına gömersen bayatlar, üstelik kaynak gösteremezsin. Yanlış bilgi = <strong>misdescription</strong> = hukuki risk.</p>
+
+<div class="ev crit">
+<h4>Grounding kuralı — mimari zorunluluk, tercih değil</h4>
+<p>Cevap <strong>sadece</strong> o ilanın kendi alanlarından ve tenant'ın kendi bölge rehberinden üretilir. Kullanılan alan gösterilir. Kaynak yoksa cevap: <em>“Bu bilgi ilanda yok, danışmana bağlayayım.”</em></p>
+</div>
+
+<div class="ev ok">
+<h4>Kullanılmayan zengin kaynaklar — chatbot'un besleneceği yer</h4>
+<ul>
+<li><span class="site">20</span> <strong>Seller's Story + Location prose</strong> — çalışmadaki en iyi kaynak metin</li>
+<li><span class="site">08</span> <strong>Advice Hub</strong> — rehberler, SSS, bölge içerikleri</li>
+<li><span class="site">17</span> <span class="site">21</span> Bölge rehberleri</li>
+<li><span class="site">05</span> Giraffe360 + drone medyası</li>
+</ul>
+</div>
+
+<h4>Sadece konuşmasın, iş yapsın — tool-calling</h4>
+<pre><code>search_properties(filters)   → arama yapar
+book_viewing(id, slot)       → gerçek Cal.com rezervasyonu
+get_area_data(postcode)      → okul / ulaşım / sel verisi
+handoff_to_branch(postcode)  → doğru şubeye yönlendirir</code></pre>
+
+<p><strong>Human-only markalar için</strong> <span class="site">01</span> <span class="site">20</span> (bilinçli tercih): Chatbot'u “danışman yerine geçen” olarak değil, <strong>“randevu öncesi brifing”</strong> olarak konumlandır — AI ilanı özetler, soruları toplar, danışman görüşmeyi yapar.</p>
+
+<div class="ev crit">
+<h4>Kritik uyarı</h4>
+<p>Boş açma. <span class="site">20</span>'de chatbot'un dormant kalmasının sebebi muhtemelen arkasında bir şey olmaması. Arkası hazır olmadan feature flag açmak, olmamasından kötüdür.</p>
+</div>
+
+<p><strong>Dünya örneği:</strong> <strong>Ask Rightmove</strong> (ilan seviyesinde soru-cevap, Google Maps bölge verisiyle birleştirilmiş), <strong>Ask Redfin</strong> (ilan + bölge + okul), <strong>Realtor.com RealAssist AI</strong>.</p>
+</div>
+
+<h2><span class="num">06</span>Site tasarımları daha “fresh” olmalı</h2>
+<div class="col">
+<div class="ev warn">
+<h4>Dürüst not</h4>
+<p>Analizlerde çoğu sitenin “Genel UX” notu <strong>“İyi”</strong>. Zayıf bulunan şey görsel tasarım değil, <strong>keşif deneyimi ve bilgi mimarisi.</strong> Toplantıda “tasarım eski” dersen kanıtın zayıf kalır; aşağıdakileri dersen kalmaz.</p>
+</div>
+</div>
+
+<div class="scroll">
+<table>
+<thead><tr><th>Bulgu</th><th>Site</th></tr></thead>
+<tbody>
+<tr><td>Footer iki kez render + <code>Company Number: NaN</code> — tema build hatası, platform geneli</td><td><span class="site">01</span> <span class="site">07</span></td></tr>
+<tr><td>JS SyntaxError → form kırık</td><td><span class="site">09</span></td></tr>
+<tr><td><strong>Floor Plans sekmesi tamamen boş</strong></td><td><span class="site">05</span></td></tr>
+<tr><td>“Key Facts for Buyers” (Sprift raporu) “Media Links” akordeonuna gömülü, görünmüyor</td><td><span class="site">07</span></td></tr>
+<tr><td>EPC için sekme yok — Features metninde tek satır</td><td><span class="site">10</span></td></tr>
+<tr><td>Varsayılan sıralama “Highest Price”</td><td><span class="site">12</span></td></tr>
+<tr><td>Varsayılan yarıçap 0.25 mil</td><td><span class="site">11</span> <span class="site">21</span></td></tr>
+<tr><td>İlan açıklama kalitesi 3 satır ↔ 3 paragraf arası değişiyor</td><td><span class="site">12</span> ve geneli</td></tr>
+<tr><td>Mobil kullanılabilirlik <strong>hiçbir sitede gerçek cihazda test edilmemiş</strong></td><td>21/21</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<div class="ev crit">
+<p><strong>En çarpıcı olan:</strong> <span class="site">20</span> By Design'da <strong>£4.5M'lık bir ilanda bile</strong> özet yok, Q&amp;A yok, benzer ilan yok. Orada sorun renk paleti değil.</p>
+</div>
+
+<h4>Çözüm — bu sırayla</h4>
+<ol>
+<li><strong>Hafta 1–2 · Bilgi mimarisi ve varsayılanlar (bedava kazanç):</strong> Varsayılanları düzelt (yarıçap, sıralama, SSTC) · Gömülü içerikleri yüzeye çıkar (<span class="site">07</span> Sprift, <span class="site">10</span> EPC) · Boş sekmeleri ya doldur ya kaldır (<span class="site">05</span>) · Tema build hatalarını kapat</li>
+<li><strong>Hafta 2–4 · İlan sayfası yeniden düzeni:</strong> AI özet + Top-5 highlights kartın üstünde, Q&amp;A alanı, benzer ilanlar, bölge verisi bloğu</li>
+<li><strong>Gerçek cihazda mobil testi</strong> — 21 raporun hepsinde “gerçek cihazda test edilmeli” notu var, hiçbirinde yapılmamış</li>
+<li><strong>Görsel yenileme</strong> — ayrı proje, AI kapsamı dışında. Yukarıdaki 3 adım tamamlanmadan başlanırsa aynı sorunlar yeni renklerle tekrar eder.</li>
+</ol>
+</div>
+
+<h2>Listede olmayan 4 kritik madde</h2>
+<p class="sec-note col">Bunlar senin 6 maddende yok ama kanıtı en güçlü olanlar arasında. Toplantıda konuşulmazsa en büyük fırsat kaçmış olur.</p>
+
+<div class="col">
+<h3>A · Sahte “100% MATCH” rozeti <span class="tag t-crit">Faz 1</span></h3>
+<div class="ev crit">
+<h4>Kanıt — sayısal, tartışmasız</h4>
+<ul>
+<li><span class="site">02</span> Town and City: <strong>44/44 ilanda %100</strong> — anonim kullanıcıya</li>
+<li><span class="site">03</span> Harrisons: 8/8 &nbsp;·&nbsp; <span class="site">04</span> Lloyds: 9/9 (<strong>SSTC ilanlar dahil</strong>) &nbsp;·&nbsp; <span class="site">06</span> Property Connections: 27/27</li>
+<li><span class="site">05</span> Property Cloud: %100 + içi boş <em>“HAVE YOU LOGGED IN?”</em> butonu</li>
+<li><span class="site">20</span> By Design: <strong>hiçbir kriter girilmediğinde bile %100</strong></li>
+<li><span class="site">13</span> Keys and Lee: aslında filtre uyumu, ama “AI” olarak pazarlanıyor</li>
+</ul>
+</div>
+<p><strong>Çözüm — iki seçenek:</strong> <strong>(a)</strong> Rozeti tamamen kaldır — en dürüst, en hızlı. <strong>(b)</strong> Gerçek skorla: kriter uyumu (filtre eşleşme %) + davranış sinyali (görüntülenen/kaydedilen ilanların embedding'i) + light rerank. Kullanıcıya skorun <strong>neden</strong> o olduğu gösterilir.</p>
+<p><strong>Neden Faz 1:</strong> Sahte etiket dururken üstüne AI eklersen, güven kırıldığı gün AI'ı da beraberinde götürür. Bu bir sıralama meselesi, tercih meselesi değil.</p>
+
+<h3>B · Değerleme: rakam var, gerekçe yok</h3>
+<p>Siteler kendi araçlarına güvenmediklerini <strong>kendileri yazıyor:</strong></p>
+<div class="ev crit">
+<ul>
+<li><span class="site">11</span> Cope &amp; Co: ekranda açıkça <strong>“60-70% ACCURATE”</strong> yazıyor</li>
+<li><span class="site">05</span> <em>“Up to 60% accurate”</em></li>
+<li><span class="site">04</span> Kendi metni: <em>“real accuracy comes from experience, not algorithms”</em></li>
+<li><span class="site">10</span> ValPal: <em>“algorithm isn't always possible. Call our experts”</em></li>
+<li><span class="site">19</span> <em>“doesn't take your property's uniqueness into account”</em> &nbsp;·&nbsp; <span class="site">08</span> <em>“just a starting point”</em></li>
+<li><span class="site">16</span> Rakam var, “neden” yok &nbsp;·&nbsp; <span class="site">21</span> 60 saniyede guide price, açıklama yok &nbsp;·&nbsp; <span class="site">02</span> Aralık (£174–301k), gerekçe yok</li>
+<li><span class="site">12</span> Rakamı ekranda hiç göstermiyor, <strong>iletişim bilgisi karşılığında e-postayla</strong> yolluyor</li>
+</ul>
+</div>
+<p><strong>Çözüm:</strong> AVM inşa etme — <strong>“neden”i</strong> inşa et. Mevcut AVM/ValPal/Hometrack çıktısının altına 3 faktörlü açıklama:</p>
+<blockquote><p>“Bu tahmin şunlara dayanıyor: (1) son 6 ayda aynı postcode'daki satışlar, (2) m² × oda sayısı, (3) EPC notu. Hesaba katılmayanlar: mülkün durumu, tadilat, manzara. Kesin değer için yerinde inceleme gerekir.”</p></blockquote>
+<p><strong>Dil kuralı:</strong> Tavsiye değil, açıklama. <em>“Şu fiyata satın”</em> <strong>yasak.</strong></p>
+<p><strong>Bonus:</strong> <span class="site">15</span> No.86 zaten fotoğraf topluyor → vision modele ver → 24 saat beklemeden anlık ön tahmin, insan onaylar.</p>
+
+<h3>C · Yanlış hukuki ve coğrafi bağlam <span class="tag t-crit">Faz 1</span></h3>
+<div class="ev crit">
+<ul>
+<li><span class="site">06</span> Property Connections: <strong>İskoçya'da (Livingston/Bathgate, SC şirketi) İngiliz SDLT hesaplayıcı kullanıyor.</strong> İskoçya'da LBTT uygulanır. Bu <strong>hukuki risk</strong>, UX sorunu değil.</li>
+<li><span class="site">06</span> İletişim haritası 600 km yanlış (Bathgate → Kent)</li>
+<li><span class="site">06</span> İskoç piyasasının “Offers Over” fiyatlandırması için alıcı rehberi yok</li>
+</ul>
+</div>
+<p><strong>Çözüm (AI değil, deterministik kural motoru):</strong> Postcode → ülke → doğru vergi kuralı (SDLT / LBTT / LTT). Build sırasında geocode doğrulaması.</p>
+
+<h3>D · Toplanan veri hiç kullanılmıyor</h3>
+<div class="ev warn">
+<ul>
+<li><strong>Heads-Up formu 21/21 tenant'ta</strong> taşınma zamanı, avukat durumu, mortgage durumu, mevcut evin satılması gerekip gerekmediğini topluyor → <strong>sıralamaya, önceliğe, hiçbir yere yansımıyor</strong></li>
+<li><span class="site">17</span> <code>ice.js</code> davranış izliyor → kişiselleştirmeye dönüşmüyor</li>
+<li><span class="site">16</span>–<span class="site">21</span> <code>IcebergTracker</code> davranış verisi topluyor → hiçbir yere gitmiyor</li>
+<li><span class="site">07</span> Çalışmadaki en zengin form (8 mülk tipi, durum seçicileri) → sadece talep gönderiyor</li>
+</ul>
+</div>
+<p><strong>Çözüm:</strong> Lead scoring (kural motoru + light ML): taşınma yakın × avukat hazır × mortgage onaylı × zincir temiz = yüksek öncelik. Davranış verisi → embedding tabanlı benzer ilan + sıralama.</p>
+<p><strong>GDPR korkuluğu:</strong> Skor <strong>yönlendirsin, kapıyı kapatmasın.</strong> Düşük skorlu lead sıraya alınır, elenmez.</p>
+</div>
+
+<h2>Yol haritası</h2>
+<p class="sec-note col">Fazlar gerçek bir bağımlılık sırası — Faz 2 Faz 1'in güven onarımına, Faz 3 Faz 2'nin veri katmanına dayanıyor.</p>
+
+<div class="phase">
+  <span class="p-n">FAZ 1</span>
+  <h3>Güven onarımı</h3>
+  <div class="p-body">
+    <span class="p-when">Hafta 1–3 · AI yok</span>
+    <p>Randevu/değerleme bug'ları (<span class="site">09</span> acil) · Cal.com'u 21 tenant'a aç · Sahte %100 rozetini kaldır · Dormant bileşenler · SDLT/LBTT · Varsayılanlar (yarıçap, sıralama, SSTC) · Tema hataları (NaN, duble footer) · Şube yönlendirme</p>
+    <p class="p-kick">Bu fazın tamamı config ve bug işi. En hızlı görünür kazanç burada.</p>
+  </div>
+</div>
+
+<div class="phase">
+  <span class="p-n">FAZ 2</span>
+  <h3>Arama ve keşif</h3>
+  <div class="p-body">
+    <span class="p-when">Hafta 3–8</span>
+    <p>Genişletilmiş filtre seti · Doğal dil arama (tool-calling → JSON) · Fuzzy matching · Harita görünümü · Otomatik bölge/ulaşım verisi</p>
+    <p class="p-kick">Platform seviyesinde bir kez yazılır, 21 sitede açılır.</p>
+  </div>
+</div>
+
+<div class="phase">
+  <span class="p-n">FAZ 3</span>
+  <h3>Anlama ve açıklama</h3>
+  <div class="p-body">
+    <span class="p-when">Hafta 6–12</span>
+    <p>İlan AI özeti + Top-5 highlights (batch üretim, ilan başına 1×, saklanır — ölçek maliyeti yok) · İlan Q&amp;A (RAG) · Mesai dışı chatbot · Değerleme açıklama katmanı · EPC / floor plan / Home Report özeti</p>
+  </div>
+</div>
+
+<div class="phase">
+  <span class="p-n">FAZ 4</span>
+  <h3>Dönüşüm ve otomasyon</h3>
+  <div class="p-body">
+    <span class="p-when">Hafta 10+</span>
+    <p>Lead scoring · Davranış tabanlı sıralama · Danışman içerik stüdyosu · Marka metni farklılaştırma · Vision değerleme</p>
+  </div>
+</div>
+
+<h2>Korkuluklar</h2>
+<p class="sec-note col">Pazarlık konusu değil.</p>
+<div class="col">
+<ol class="rails">
+<li><strong>Misdescription en büyük hukuki risk.</strong> Her AI cevabı ilan alanına dayanacak, alan gösterilecek, bilinmiyorsa <em>“bilmiyorum + danışmana yönlendir”</em>. Mimari zorunluluk.</li>
+<li><strong>Yayına giden hiçbir AI metni danışman onayı olmadan çıkmasın.</strong></li>
+<li><strong>Değerleme dili tavsiye değil, açıklama.</strong> <em>“Şu fiyata satın”</em> yasak.</li>
+<li><strong>Lead skorlama GDPR kapsamında otomatik karar sayılır.</strong> Skor yönlendirsin, kapıyı kapatmasın.</li>
+<li><strong>Eval harness olmadan prompt değiştirme = sessiz bozulma.</strong> 21 siteden toplanan gerçek sorgularla 200 örneklik altın küme zorunlu.</li>
+<li><strong>Arkası hazır olmadan feature flag açma.</strong> Boş chatbot, chatbot olmamasından kötüdür.</li>
+</ol>
+</div>
+
+<h2>Dünya örnekleri</h2>
+<p class="sec-note col">Amaç “Zillow'u kopyalayalım” değil — “bu çözülebilir bir problem, çözenler var” demek.</p>
+
+<div class="scroll">
+<table>
+<thead><tr><th>Bizdeki sorun</th><th>Kim çözmüş</th><th>Nasıl</th></tr></thead>
+<tbody>
+<tr><td>Doğal dil arama yok (21/21)</td><td>Zillow — 2023, 2024 genişletme</td><td>NL search → yapılandırılmış filtre</td></tr>
+<tr><td>Filtrede olmayan özellikler aranamıyor</td><td>Zoopla smart tags, Rightmove AI Keywords</td><td>NLP + computer vision ile ilan metni ve görselinden etiket çıkarma</td></tr>
+<tr><td>İlan Q&amp;A yok (21/21)</td><td>Ask Rightmove, Ask Redfin, Realtor RealAssist</td><td>RAG — ilan verisi + bölge verisi</td></tr>
+<tr><td>Çok turlu arama yok</td><td>Redfin Conversational Search</td><td>Oturum bazlı filtre güncelleme</td></tr>
+<tr><td>Değerleme açıklaması yok</td><td>Zillow Zestimate, Redfin Estimate, Zoopla Estimate</td><td>Rakam + faktör açıklaması</td></tr>
+<tr><td>Kişiselleştirme sahte</td><td>Zillow personalization</td><td>Gerçek davranış sinyali</td></tr>
+<tr><td>Floor plan ham görsel</td><td>Zillow Showcase interactive floorplans</td><td>Görsel → oda-oda yapılandırılmış veri</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<div class="ev crit">
+<h4>Ölçek uyarısı — toplantıda mutlaka söyle</h4>
+<p>Zillow'un ekibi bizim müşterimizin ekibi değil. Bu örnekleri <strong>yön göstergesi</strong> olarak kullan, hedef olarak değil. Faz 1'in tamamı 3 kişilik bir ekiple 2–3 haftada çıkar; asıl ikna edici olan bu.</p>
+</div>
+</div>
+
+<footer>
+  <p>Kaynak: <code>sites/01–21</code> (4 turlu inceleme) · <code>eksikler-ve-cozumler.md</code> · <code>ai-ozellik-ve-dunya-ornekleri.md</code> · <code>ozellik-ozeti.md</code> · <code>tool-calling-ornek-tr.json</code> · <code>gg/mimari-onerisi.md</code></p>
+</footer>
+
+</div>
