@@ -1,0 +1,2475 @@
+\documentclass[11pt,a4paper]{article}
+
+% ------------------------------------------------
+% PACKAGES
+% ------------------------------------------------
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{turkish}
+\setotherlanguage{english}
+
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{xurl}
+
+% ------------------------------------------------
+% PAGE SETTINGS
+% ------------------------------------------------
+\geometry{
+    top=2.2cm,
+    bottom=2.2cm,
+    left=2.4cm,
+    right=2.4cm,
+    headheight=14pt
+}
+
+\setstretch{1.15}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\sloppy
+\emergencystretch=2em
+
+% ------------------------------------------------
+% COLORS
+% ------------------------------------------------
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{secondary}{HTML}{4F81BD}
+\definecolor{lightgray}{HTML}{F3F4F6}
+\definecolor{darkgray}{HTML}{444444}
+
+% ------------------------------------------------
+% HEADINGS
+% ------------------------------------------------
+\titleformat{\section}
+{\Large\bfseries\color{primary}}
+{\thesection.}
+{0.6em}
+{}
+
+\titleformat{\subsection}
+{\large\bfseries\color{secondary}}
+{\thesubsection}
+{0.6em}
+{}
+
+\titleformat{\subsubsection}
+{\normalsize\bfseries}
+{}
+{0em}
+{}
+
+% ------------------------------------------------
+% HEADER / FOOTER
+% ------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AI-Powered Real Estate Platform Opportunities}
+\fancyhead[R]{Neuron}
+\fancyfoot[C]{\thepage}
+
+% ------------------------------------------------
+% LINKS
+% ------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=secondary
+}
+
+% ------------------------------------------------
+% LISTINGS
+% ------------------------------------------------
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{lightgray},
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    showstringspaces=false
+}
+
+% ------------------------------------------------
+% DOCUMENT
+% ------------------------------------------------
+\begin{document}
+
+% ------------------------------------------------
+% TITLE
+% ------------------------------------------------
+\begin{center}
+    {\LARGE\bfseries\color{primary}
+    AI-Powered Real Estate Platform Opportunities}
+
+    \vspace{0.3cm}
+
+    {\large
+    Feature Priorities, Development Approaches and Global Examples}
+
+    \vspace{0.8cm}
+
+    \rule{\textwidth}{0.6pt}
+\end{center}
+
+\vspace{0.5cm}
+
+% ------------------------------------------------
+\section*{Genel Bakış}
+% ------------------------------------------------
+
+İncelenen 21 emlak sitesinde AI açısından en belirgin fırsatlar;
+kullanıcıların mülk aramasını kolaylaştırmak,
+ilan içerisindeki bilgiyi daha erişilebilir hale getirmek,
+kişiselleştirilmiş öneriler sunmak
+ve karar verme sürecini desteklemek etrafında yoğunlaşmaktadır.
+
+Özelliklerin tamamı aynı seviyede ürün değeri veya teknik karmaşıklık
+taşımamaktadır. Bu nedenle öneriler üç ana grupta değerlendirilebilir.
+
+\subsection*{Core Search \& Discovery}
+
+Kullanıcının doğrudan arama ve ilan keşfetme deneyimini iyileştiren
+özellikler:
+
+\begin{enumerate}
+    \item AI Natural-Language Search
+    \item Conversational Property Search
+    \item Ask This Property / AI Property Q\&A
+    \item AI Area / Neighborhood Advisor
+    \item Personalized Property Recommendations
+\end{enumerate}
+
+\subsection*{Decision Support}
+
+Kullanıcının bulduğu mülkler arasında karar vermesine yardımcı olan
+özellikler:
+
+\begin{enumerate}[start=6]
+    \item AI Property Valuation Explanation
+    \item AI Property Comparison
+    \item AI Match Score
+    \item AI Interactive Floorplan
+\end{enumerate}
+
+\subsection*{Advanced \& Specialised AI}
+
+Daha güçlü veri, görsel işleme veya özel kullanıcı segmentleri gerektiren
+özellikler:
+
+\begin{enumerate}[start=10]
+    \item Visual Semantic Search
+    \item AI Virtual Staging
+    \item AI Investment Analysis
+\end{enumerate}
+
+% ================================================================
+\section{AI Natural-Language Search}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcı klasik filtreleri tek tek seçmek yerine:
+
+\begin{quote}
+``Okula yakın, 3 yatak odalı, bahçeli ve £300,000 altında bir ev istiyorum.''
+\end{quote}
+
+gibi doğal bir cümleyle arama yapabilir.
+
+Sistem bu cümleyi yapılandırılmış arama kriterlerine dönüştürür:
+
+\begin{itemize}
+    \item location
+    \item minimum / maximum price
+    \item bedrooms
+    \item property type
+    \item garden
+    \item transport proximity
+    \item school proximity
+    \item additional keywords
+\end{itemize}
+
+\subsection*{Neden değerli?}
+
+İncelenen sitelerde arama kutuları çoğunlukla postcode, şehir veya adres
+tabanlı çalışmaktadır.
+
+Natural-Language Search, kullanıcının filtre sisteminin nasıl çalıştığını
+öğrenmek zorunda kalmadan doğrudan ihtiyacını ifade etmesini sağlar.
+
+Aynı özellik platform seviyesinde geliştirilerek birden fazla
+estate-agent sitesinde kullanılabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item \textbf{LLM:} OpenAI GPT, Claude veya Gemini
+    \item Structured Output / Function Calling
+    \item Elasticsearch / OpenSearch
+    \item Mevcut property database ve filtre API'leri
+    \item Postcode / geolocation servisleri
+\end{itemize}
+
+LLM'in görevi doğrudan ilan bulmak yerine, kullanıcının cümlesini
+güvenilir bir filtre JSON'una dönüştürmek olabilir.
+
+\begin{lstlisting}
+{
+  "max_price": 300000,
+  "bedrooms": 3,
+  "garden": true,
+  "near_school": true
+}
+\end{lstlisting}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Mevcut property filtrelerinin ortak bir schema altında tanımlanması.
+    \item Kullanıcı prompt'unu bu schema'ya dönüştüren AI parser geliştirilmesi.
+    \item Çıkan kriterlerin mevcut property search API'sine gönderilmesi.
+    \item Desteklenmeyen veya belirsiz kriterlerin kullanıcıya açıklanması.
+    \item Kullanıcı aramalarından hangi terimlerin sık kullanıldığının analiz edilmesi.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Doğrudan örnekler:}
+Zillow, Realtor.com ve Rightmove doğal dil kullanılarak property search
+yapılabilen AI arama deneyimleri geliştirmiştir.
+
+\textbf{Destekleyici yaklaşım:}
+Zoopla, NLP ve computer vision ile oluşturduğu smart tags sayesinde
+klasik filtrelerde bulunmayan property özelliklerini arama sistemine
+eklemektedir.
+
+% ================================================================
+\section{Conversational Property Search}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Natural-Language Search tek bir sorguyu yorumlarken Conversational Search,
+aramayı bir \textbf{multi-turn conversation} haline getirir.
+
+Örneğin:
+
+\begin{quote}
+\textbf{User:} 3 bedroom house near Manchester.
+
+\textbf{AI:} 127 properties found.
+
+\textbf{User:} Biraz daha ucuz olsun.
+
+\textbf{User:} Tren istasyonuna maksimum 20 dakika olsun.
+
+\textbf{User:} Bahçesi olmayanları çıkar.
+\end{quote}
+
+AI önceki konuşmanın bağlamını koruyarak aramayı sürekli günceller.
+
+\subsection*{Neden değerli?}
+
+Ev arama süreci genellikle tek bir filtreleme işlemi değildir.
+Kullanıcı sonuçları gördükçe kriterlerini değiştirir.
+
+Conversational Search bu davranışı doğal hale getirir ve aynı zamanda
+kullanıcının gerçek tercihlerini öğrenmek için önemli veri oluşturur.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item LLM conversation layer
+    \item Function Calling
+    \item Session / conversation state
+    \item Redis
+    \item Property Search API
+    \item PostgreSQL
+    \item Optional user preference profile
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Natural-Language Search altyapısının oluşturulması.
+    \item Kullanıcının aktif filtrelerinin session içerisinde tutulması.
+    \item Yeni mesajların mevcut kriterleri değiştirecek şekilde yorumlanması.
+    \item AI'ın sadece izin verilen property search fonksiyonlarını çağırması.
+    \item Kullanıcı tercihlerinin izin dahilinde recommendation sistemine aktarılması.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Redfin Conversational Search}, kullanıcıların sonuçlarını doğal
+konuşmayla değiştirmesine izin vermektedir.
+
+\textbf{Zillow AI Mode},
+\textbf{Realtor.com RealAssist AI}
+ve \textbf{Ask Rightmove} ise property search'ü geleneksel filtre
+sisteminden daha conversational bir deneyime dönüştüren güncel
+örneklerdir.
+
+% ================================================================
+\section{Ask This Property / AI Property Q\&A}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Her property listing üzerinde kullanıcı doğrudan o mülk hakkında soru
+sorabilir:
+
+\begin{itemize}
+    \item ``Driveway iki araba alır mı?''
+    \item ``Bu EPC rating ne anlama geliyor?''
+    \item ``En yakın tren istasyonu nerede?''
+    \item ``Home office için uygun bir oda var mı?''
+    \item ``Bu evde kaç bathroom var?''
+\end{itemize}
+
+AI cevabı internetten genel bilgi üretmek yerine ilgili property'nin
+verilerine dayandırır.
+
+\subsection*{Neden değerli?}
+
+İlan açıklamalarının kalitesi estate agent'a göre ciddi biçimde
+değişmektedir.
+
+Property Q\&A sayesinde uzun açıklamalarda bilgi aramak veya estate
+agent'a temel sorular göndermek yerine kullanıcı cevaplarını doğrudan
+listing içerisinde alabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item LLM
+    \item \textbf{RAG --- Retrieval-Augmented Generation}
+    \item Vector database: pgvector, Pinecone veya Qdrant
+    \item Property description
+    \item EPC
+    \item Floorplan
+    \item Structured listing data
+    \item Local-area APIs
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Her property için güvenilir veri kaynaklarının belirlenmesi.
+    \item Description, EPC ve diğer property bilgilerinin indekslenmesi.
+    \item Kullanıcı sorusuna ilgili verinin retrieval ile getirilmesi.
+    \item LLM'in yalnızca bulunan kaynaklara göre cevap üretmesi.
+    \item Yeterli veri bulunmadığında AI'ın bunu açıkça belirtmesi.
+    \item Gerekli sorularda kullanıcının estate agent enquiry sistemine yönlendirilmesi.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Ask Redfin}, property details, local market ve nearby schools
+gibi konularda AI destekli cevap vermektedir.
+
+\textbf{Ask Rightmove} ise property bilgilerini local-area verileriyle
+birleştirerek listing seviyesinde soru-cevap deneyimi geliştirmektedir.
+
+\textbf{Realtor.com RealAssist AI} de property ve neighborhood
+sorularını conversational interface üzerinden cevaplayan benzer bir
+yaklaşım kullanmaktadır.
+
+% ================================================================
+\section{AI Area / Neighborhood Advisor}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Bir property'nin sadece fiziksel özelliklerini değil, çevresindeki yaşam
+koşullarını da açıklar.
+
+Örneğin:
+
+\begin{itemize}
+    \item nearby schools
+    \item supermarkets
+    \item parks
+    \item restaurants
+    \item railway stations
+    \item commute times
+    \item broadband
+    \item flood risk
+    \item local amenities
+\end{itemize}
+
+AI bu bilgileri tek tek tablo halinde göstermek yerine kullanıcı için
+yorumlayabilir.
+
+\begin{quote}
+``Bu property, Liverpool Street'e yaklaşık 35 dakikalık commute
+mesafesinde. Yakın çevrede üç primary school ve yaklaşık 10 dakika
+yürüme mesafesinde iki supermarket bulunuyor.''
+\end{quote}
+
+\subsection*{Neden değerli?}
+
+Kullanıcı aslında yalnızca bir bina değil, belirli bir
+\textbf{location + lifestyle} kombinasyonu satın almaktadır.
+
+İncelenen sitelerde çoğu zaman yalnızca temel Google Maps embed'i
+bulunması bu konuda önemli bir geliştirme fırsatı oluşturmaktadır.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Google Maps Platform
+    \item Google Places API
+    \item Routes / Distance Matrix
+    \item UK school datasets
+    \item Transport APIs
+    \item Environment Agency flood data
+    \item Broadband datasets
+    \item LLM summarisation
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Property postcode veya koordinatının alınması.
+    \item Güvenilir üçüncü parti kaynaklardan çevre verilerinin toplanması.
+    \item Verinin standart bir area profile formatına dönüştürülmesi.
+    \item LLM ile kullanıcı dostu açıklamalar oluşturulması.
+    \item Kullanıcının kendi iş veya okul adresini girerek commute hesaplayabilmesi.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow doğal dil aramasında schools, commute ve points of interest
+kriterlerini kullanmaktadır.
+
+Realtor.com RealAssist AI kullanıcıların günlük rutin ve commute
+ihtiyaçlarını property search'e dahil etmeyi hedeflemektedir.
+
+Ask Rightmove ise Google Maps local-area verilerini property
+bilgileriyle birlikte kullanmaktadır.
+
+% ================================================================
+\section{Personalized Property Recommendations}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcının davranışlarından hangi property türleriyle ilgilendiğini
+öğrenir ve buna göre öneriler sunar.
+
+Sinyaller arasında:
+
+\begin{itemize}
+    \item viewed properties
+    \item saved properties
+    \item searches
+    \item price ranges
+    \item locations
+    \item property types
+    \item ignored listings
+    \item enquiry behaviour
+\end{itemize}
+
+bulunabilir.
+
+\subsection*{Neden değerli?}
+
+İncelenen estate-agent sitelerinde ``Similar Properties'' veya sidebar
+alanlarının önemli bölümü gerçekte kişiselleştirilmiş değildir ve
+yalnızca newest/latest properties göstermektedir.
+
+Gerçek recommendation sistemi kullanıcıya daha alakalı ilanlar
+gösterebilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\textbf{İlk versiyon:}
+
+\begin{itemize}
+    \item Rule-based recommendation
+    \item SQL / Elasticsearch similarity
+    \item Property feature vectors
+\end{itemize}
+
+\textbf{Daha gelişmiş versiyon:}
+
+\begin{itemize}
+    \item Embeddings
+    \item Collaborative filtering
+    \item Learning-to-rank
+    \item Recommendation models
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Önce property-to-property similarity sistemi geliştirilir.
+    \item Kullanıcı davranış sinyalleri anonim veya izinli şekilde toplanır.
+    \item Kullanıcının preference profile'ı oluşturulur.
+    \item Candidate properties skorlanır.
+    \item Recommendation performansı click-through ve enquiry dönüşümüyle ölçülür.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow recommendation ve personalization sistemleri üzerinde uzun
+süredir çalışmaktadır.
+
+Redfin'in conversational search sistemi tercih sinyallerini aktif arama
+sırasında kullanmaktadır.
+
+Zoopla da AI-enabled kullanıcıların listing engagement ve lead
+sonuçlarında artış bildirmiştir.
+
+% ================================================================
+\section{AI Property Valuation Explanation}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Buradaki öneri AI'ın sıfırdan bir property valuation üretmesi değildir.
+
+Mevcut:
+
+\begin{itemize}
+    \item AVM
+    \item ValPal
+    \item Hometrack
+    \item internal valuation model
+\end{itemize}
+
+gibi sistemlerden gelen değerin \textbf{neden o aralıkta olduğunu
+açıklamasıdır}.
+
+\begin{quote}
+``Estimated value ağırlıklı olarak aynı postcode içerisindeki yakın dönem
+satışları, property type, floor area ve bedroom sayısına dayanmaktadır.
+Interior condition bu tahmine dahil edilmemiş olabilir.''
+\end{quote}
+
+\subsection*{Neden değerli?}
+
+Kullanıcı yalnızca bir rakam görmek yerine rakamın arkasındaki faktörleri
+anlayabilir.
+
+Bu özellikle seller lead generation açısından güveni artırabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Existing AVM API
+    \item Comparable sales database
+    \item LLM explanation layer
+    \item Structured valuation factors
+    \item Optional SHAP / feature importance
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Mevcut valuation sisteminin verdiği input/output faktörlerinin alınması.
+    \item Sonucu etkileyen faktörlerin yapılandırılmış olarak AI'a verilmesi.
+    \item AI'ın yalnızca bu faktörleri açıklaması.
+    \item Confidence ve veri eksiklerinin kullanıcıya gösterilmesi.
+    \item Sonucun appraisal veya financial advice olarak sunulmaması.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Zillow Zestimate},
+\textbf{Redfin Estimate}
+ve \textbf{Zoopla Estimate}
+bu alandaki güçlü valuation örnekleridir.
+
+HouseCanary CanaryAI ise valuation ve market verilerini conversational
+AI deneyimi içerisinde sunmaktadır.
+
+% ================================================================
+\section{AI Property Comparison}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcı 2--4 property seçerek bunları yan yana karşılaştırabilir.
+
+AI yalnızca tablo oluşturmak yerine trade-off'ları açıklar.
+
+\begin{quote}
+``Property A £25,000 daha ucuz ancak London commute süresi yaklaşık
+18 dakika daha uzun. Property B'nin EPC rating'i daha iyi ve tahmini
+enerji maliyeti daha düşük.''
+\end{quote}
+
+\subsection*{Neden değerli?}
+
+Ev arayan kullanıcıların en zorlandığı aşamalardan biri farklı browser
+tab'larında bulunan property'leri hatırlamak ve karşılaştırmaktır.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Structured property data
+    \item Comparison engine
+    \item Area / commute APIs
+    \item LLM summarisation
+    \item Saved-property system
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Kullanıcıya ``Compare'' seçeneği eklenir.
+    \item Property verileri normalize edilir.
+    \item Sabit karşılaştırma tablosu oluşturulur.
+    \item AI önemli farklılıkları özetler.
+    \item Kullanıcının kriterlerine göre avantaj/dezavantaj açıklaması yapılabilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow AI Mode ve Realtor.com RealAssist AI property comparison'ı
+conversational AI deneyiminin bir parçası haline getirmektedir.
+
+Redfin'in ChatGPT deneyimi de property ve neighborhood seçeneklerinin
+konuşarak değerlendirilmesine imkan vermektedir.
+
+% ================================================================
+\section{AI Match Score}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Her property için kullanıcının kriterleriyle gerçek bir uyum skoru
+hesaplanır.
+
+Örneğin:
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+\textbf{Criterion} & \textbf{Match} \\
+\midrule
+Price & 100\% \\
+Bedrooms & 100\% \\
+Commute & 75\% \\
+Garden & 100\% \\
+School proximity & 60\% \\
+\midrule
+\textbf{Overall Match} & \textbf{87\%} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Neden değerli?}
+
+Yüzlerce property bulunan search result içerisinde kullanıcının en
+alakalı ilanları daha hızlı bulmasına yardımcı olur.
+
+Ancak skorun gerçek kullanıcı kriterlerine dayanması gerekir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+İlk versiyon için AI şart değildir:
+
+\begin{itemize}
+    \item Weighted scoring algorithm
+    \item Rules engine
+\end{itemize}
+
+Daha ileri seviyede:
+
+\begin{itemize}
+    \item Recommendation models
+    \item Embeddings
+    \item Learning-to-rank
+    \item Behavioural models
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Hard requirements ve soft preferences ayrılır.
+    \item Her kriter için ağırlık belirlenir.
+    \item Property'ler aynı scoring modelinden geçirilir.
+    \item Kullanıcıya skorun neden oluştuğu gösterilir.
+    \item Zamanla kullanıcı davranışından ağırlıklar öğrenilebilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Rightmove AI Keyword Sort, property images ve text içerisindeki keyword
+eşleşmelerini değerlendirerek search result sıralamasında kullanmaktadır.
+
+Zillow recommendation sistemleri predicted property relevance
+yaklaşımına yakın bir model kullanmaktadır.
+
+Zoopla smart tags ise doğrudan match score vermese de property attribute
+extraction için gerekli altyapının iyi bir örneğidir.
+
+% ================================================================
+\section{AI Interactive Floorplan}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Floorplan yalnızca statik bir JPEG veya PDF olmaktan çıkar ve property
+discovery sisteminin bir parçası haline gelir.
+
+Kullanıcı:
+
+\begin{itemize}
+    \item ``Home office için hangi oda daha uygun?''
+    \item ``Kitchen ile living room bağlantılı mı?''
+    \item ``Master bedroom hangisi?''
+    \item ``Bu fotoğraf hangi odaya ait?''
+\end{itemize}
+
+gibi sorular sorabilir.
+
+\subsection*{Neden değerli?}
+
+Floorplan'da bulunan değerli bilgi çoğu estate-agent sitesinde kullanıcı
+tarafından manuel olarak yorumlanmaktadır.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Vision Language Models
+    \item OCR
+    \item Image segmentation
+    \item Object detection
+    \item Floorplan parsing
+    \item Multimodal embeddings
+    \item LLM / Vision-Language Model
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Floorplan içerisindeki room label'ları ve ölçüler çıkarılır.
+    \item Odalar yapılandırılmış bir JSON representation'a dönüştürülür.
+    \item Listing fotoğrafları ilgili odalarla eşleştirilir.
+    \item Kullanıcı floorplan hakkında doğal dilde soru sorabilir.
+    \item Model confidence düşük olduğunda bilgi kesinmiş gibi gösterilmez.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Zillow Showcase}, interactive floorplans ile listing
+fotoğraflarını room-by-room organize eden güçlü bir örnektir.
+
+AI ayrıca listing içerisindeki görselleri ve floorplan ilişkisini
+düzenlemek için kullanılmaktadır.
+
+% ================================================================
+\section{Visual Semantic Search}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcı klasik filtrelerde bulunmayan görsel özelliklerle property
+arayabilir:
+
+\begin{itemize}
+    \item ``large windows''
+    \item ``modern kitchen''
+    \item ``kitchen island''
+    \item ``exposed brick''
+    \item ``Victorian style''
+    \item ``river view''
+    \item ``bright living room''
+\end{itemize}
+
+\subsection*{Neden değerli?}
+
+Bir property'nin önemli özelliklerinin tamamı structured database
+içerisinde bulunmayabilir.
+
+Ancak property description ve fotoğraflarından bu özellikler AI ile
+çıkarılabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item CLIP / multimodal embeddings
+    \item Vision Language Models
+    \item Computer Vision
+    \item Vector database
+    \item Elasticsearch hybrid search
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Property fotoğrafları vision model tarafından analiz edilir.
+    \item Görsel attribute'lar çıkarılır.
+    \item Description içerisindeki semantic özelliklerle birleştirilir.
+    \item Property'ler embedding/index sistemine eklenir.
+    \item Kullanıcı sorgusu semantic olarak en yakın property'lerle eşleştirilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zoopla smart tags, NLP ve computer vision kullanarak property
+attribute'ları çıkarmaktadır.
+
+Rightmove AI Keywords de listing images ve text'i analiz ederek normal
+filtrelerde olmayan özelliklere göre property bulmayı hedeflemektedir.
+
+Realtor.com ise AI-generated tags ve image enrichment sistemlerini
+search experience içerisinde kullanmaktadır.
+
+% ================================================================
+\section{AI Virtual Staging}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Boş veya kötü döşenmiş bir property fotoğrafı farklı interior design
+stillerinde yeniden görselleştirilebilir.
+
+Örneğin:
+
+\begin{itemize}
+    \item Scandinavian
+    \item Modern
+    \item Minimal
+    \item Traditional
+    \item Coastal
+\end{itemize}
+
+\subsection*{Neden değerli?}
+
+Özellikle boş property'lerde kullanıcının mekanın potansiyelini
+anlamasına yardımcı olur.
+
+Estate agent tarafında premium listing ürünü olarak da
+konumlandırılabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Image generation models
+    \item Image-to-image models
+    \item Diffusion models
+    \item Depth estimation
+    \item Segmentation
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Kullanıcı veya agent uygun property image seçer.
+    \item Sistem duvar, pencere, kapı ve oda geometrisini mümkün olduğunca korur.
+    \item Seçilen interior style'a göre staging üretilir.
+    \item Original ve AI Staged görüntüler birlikte gösterilir.
+    \item Görselin AI tarafından üretildiği açıkça belirtilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow Showcase Virtual Staging, kullanıcıların belirli odaları farklı
+tasarım stillerinde görmesine imkan vermektedir.
+
+Rightmove'un \textbf{Style with AI} özelliği de kullanıcıların
+property'nin farklı dekorasyon ihtimallerini görmesine yönelik benzer
+bir uygulamadır.
+
+% ================================================================
+\section{AI Investment Analysis}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Buy-to-let veya yatırım amaçlı property arayan kullanıcılar için:
+
+\begin{itemize}
+    \item expected rental yield
+    \item ROI
+    \item comparable sales
+    \item estimated refurbishment
+    \item local market trend
+    \item rental demand
+    \item estimated end value
+    \item EPC
+    \item potential risks
+\end{itemize}
+
+gibi verileri birleştirerek yatırım özeti oluşturur.
+
+\subsection*{Neden değerli?}
+
+Genel residential kullanıcı için zorunlu değildir ancak investor
+ağırlıklı estate agent'lar için önemli bir farklılaştırıcı olabilir.
+
+Aynı zamanda investment lead'lerinin daha iyi qualify edilmesini sağlar.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Property transaction datasets
+    \item Rental datasets
+    \item AVM
+    \item Comparable sales engine
+    \item Financial calculation engine
+    \item Market data APIs
+    \item LLM explanation layer
+\end{itemize}
+
+Burada finansal hesaplamaların LLM tarafından yapılması yerine
+deterministic backend fonksiyonları kullanılması daha güvenlidir.
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Comparable sales ve rental dataset oluşturulur.
+    \item ROI, yield ve diğer finansal değerler backend'de hesaplanır.
+    \item Property ve area risk verileri toplanır.
+    \item AI yalnızca sonuçları açıklamak ve özetlemek için kullanılır.
+    \item Veri kaynakları ve varsayımlar açık biçimde gösterilir.
+    \item Financial advice olmadığı açıkça belirtilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{PropertyPortal.ai}, property linklerinden refurbishment cost,
+ROI, yield, EPC, comparables ve benzeri yatırım analizleri üretmektedir.
+
+\textbf{HouseCanary CanaryAI} ise valuation, rental forecast ve market
+insight verilerini AI assistant aracılığıyla yatırımcılara sunmaktadır.
+
+% ================================================================
+\section{Teknik Açıdan Ortak Mimari}
+% ================================================================
+
+Bu özelliklerin çoğu birbirinden tamamen bağımsız sistemler değildir.
+Aynı AI ve property-data altyapısı farklı özellikler tarafından tekrar
+kullanılabilir.
+
+Örneğin ortak bir architecture şu şekilde oluşturulabilir:
+
+\begin{lstlisting}
+Property Database
+       |
+       +-- Property Search API
+       |
+       +-- Property Data API
+       |
+       +-- Area / Location Data
+       |
+       +-- User Preference Data
+                |
+                v
+          AI Service Layer
+                |
+      +---------+----------+
+      |         |          |
+   Natural   Property     Area
+   Search      Q&A       Advisor
+      |         |          |
+      +---------+----------+
+      |                    |
+ Recommendation       Comparison
+      |                    |
+      +---------+----------+
+                |
+           User Interface
+\end{lstlisting}
+
+Backend tarafında örneğin:
+
+\begin{itemize}
+    \item \textbf{FastAPI / Node.js}
+    \item \textbf{PostgreSQL}
+    \item \textbf{Redis}
+    \item \textbf{Elasticsearch / OpenSearch}
+    \item \textbf{pgvector / Qdrant}
+    \item \textbf{OpenAI / Claude / Gemini}
+    \item \textbf{Google Maps / Places}
+    \item mevcut property CRM/API sistemleri
+\end{itemize}
+
+birlikte kullanılabilir.
+
+Bu nedenle her AI özelliği için tamamen yeni bir altyapı kurmak yerine
+\textbf{ortak bir AI Property Intelligence Layer} geliştirmek daha
+anlamlıdır.
+
+% ================================================================
+\section{Ürün Önceliğine Genel Bakış}
+% ================================================================
+
+Özellikler yalnızca ``AI açısından ne kadar etkileyici?'' sorusuyla
+değerlendirilmemelidir.
+
+Daha anlamlı dört kriter:
+
+\begin{itemize}
+    \item User Impact
+    \item Data Readiness
+    \item Development Complexity
+    \item Commercial Potential
+\end{itemize}
+
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\centering\arraybackslash}p{2.2cm}
+    >{\centering\arraybackslash}p{2.2cm}
+    >{\centering\arraybackslash}p{2.5cm}
+    >{\centering\arraybackslash}p{2.5cm}
+}
+\toprule
+\textbf{Feature} &
+\textbf{User Impact} &
+\textbf{Data Readiness} &
+\textbf{Development Complexity} &
+\textbf{Commercial Potential} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Feature} &
+\textbf{User Impact} &
+\textbf{Data Readiness} &
+\textbf{Development Complexity} &
+\textbf{Commercial Potential} \\
+\midrule
+\endhead
+
+Natural-Language Search &
+Very High & High & Medium & High \\
+
+Conversational Search &
+Very High & High & Medium & High \\
+
+Property Q\&A &
+Very High & High & Medium & High \\
+
+Area Advisor &
+High & Medium--High & Medium & High \\
+
+Recommendations &
+High & Medium & Medium & High \\
+
+Valuation Explanation &
+High & Medium & Medium & High \\
+
+Property Comparison &
+High & High & Low--Medium & Medium--High \\
+
+Match Score &
+Medium--High & High & Low--Medium & Medium \\
+
+Interactive Floorplan &
+Medium--High & Medium & High & High \\
+
+Visual Semantic Search &
+Medium & Medium & High & Medium--High \\
+
+Virtual Staging &
+Medium & High & Medium--High & High \\
+
+Investment Analysis &
+High for Investors & Medium & High & High for Specialist Agents \\
+
+\bottomrule
+\end{longtable}
+
+Bu bakışla
+\textbf{Natural-Language Search},
+\textbf{Property Q\&A}
+ve
+\textbf{Conversational Search}
+özellikle güçlü başlangıç noktalarıdır.
+
+Bunun nedeni yalnızca kullanıcı açısından görünür AI özellikleri olmaları
+değildir.
+
+Aynı zamanda bu özellikler için geliştirilen altyapı daha sonra:
+
+\begin{itemize}
+    \item Property Comparison
+    \item Recommendations
+    \item Match Score
+    \item Area Advisor
+    \item Investment Analysis
+\end{itemize}
+
+gibi birçok özelliğin temelini oluşturabilir.
+
+Dolayısıyla amaç birbirinden bağımsız 12 AI feature geliştirmek yerine,
+ortak veri ve AI altyapısı üzerinde zaman içerisinde farklı kullanıcı
+deneyimlerinin oluşturulması olmalıdır.
+
+% ================================================================
+\section{Sonuç}
+% ================================================================
+
+Global real-estate platformlarındaki AI dönüşümü yalnızca listing
+description üretmek veya chatbot eklemek üzerine ilerlememektedir.
+
+Zillow, Redfin, Realtor.com, Rightmove ve Zoopla örneklerinde daha önemli
+eğilim, AI'ın doğrudan
+\textbf{property discovery ve decision-making journey}
+içerisine yerleştirilmesidir.
+
+Neuron açısından en güçlü fırsat da benzer şekilde AI'ı ayrı bir araç
+olarak sunmak yerine mevcut property search altyapısına entegre
+etmektir.
+
+Özellikle:
+
+\begin{center}
+\Large
+\textbf{
+Search
+$\rightarrow$
+Understand
+$\rightarrow$
+Discover
+$\rightarrow$
+Compare
+$\rightarrow$
+Decide
+$\rightarrow$
+Enquire
+}
+\end{center}
+
+akışının tamamının aynı property ve user-data katmanını kullanan AI
+servisleriyle desteklenmesi, tek tek feature geliştirmekten daha güçlü
+ve ölçeklenebilir bir ürün yaklaşımı oluşturacaktır.
+
+% ================================================================
+\section*{Kaynaklar}
+% ================================================================
+
+\begin{itemize}[leftmargin=*]
+
+    \item Zillow, AI Mode:
+    \url{https://www.zillow.com/news/zillow-debuts-ai-mode/}
+
+    \item Zillow, AI Mode Technical Overview:
+    \url{https://www.zillow.com/news/how-zillows-new-ai-mode-works-throughout-the-real-estate-journey/}
+
+    \item Zillow, Natural Language Search:
+    \url{https://zillow.mediaroom.com/2023-01-26-Zillows-new-AI-powered-natural-language-search-is-a-first-in-real-estate}
+
+    \item Zillow, Natural Language Search Update:
+    \url{https://zillow.mediaroom.com/2024-09-04-Zillows-AI-powered-home-search-gets-smarter-with-new-natural-language-features}
+
+    \item Zillow, Virtual Staging:
+    \url{https://zillow.mediaroom.com/2025-09-10-Zillow-brings-AI-powered-Virtual-Staging-to-Showcase-listings}
+
+    \item Zillow, Showcase Interactive Floor Plans:
+    \url{https://zillow.mediaroom.com/2023-06-27-The-listing-of-the-future-is-here-ShowingTime-launches-new%2C-immersive-listing-experience-on-Zillow}
+
+    \item Zillow, Neural Zestimate:
+    \url{https://www.zillow.com/news/building-the-neural-zestimate/}
+
+    \item Zillow, Personalization:
+    \url{https://www.zillow.com/news/personalized-location-preference/}
+
+    \item Redfin, Conversational Search:
+    \url{https://www.redfin.com/news/press-releases/redfin-debuts-conversational-search-to-reinvent-how-people-find-homes/}
+
+    \item Redfin, Ask Redfin:
+    \url{https://www.redfin.com/news/ask-redfin-launches-nationwide/}
+
+    \item Redfin App in ChatGPT:
+    \url{https://www.redfin.com/news/press-releases/redfin-debuts-real-estate-app-in-chatgpt/}
+
+    \item Redfin Estimate:
+    \url{https://www.redfin.com/redfin-estimate}
+
+    \item Realtor.com, AI-Powered Search Architecture:
+    \url{https://techblog.realtor.com/search-how-youd-say-it-building-ai-powered-search-at-realtor-com/}
+
+    \item Realtor.com, RealAssist AI:
+    \url{https://mediaroom.realtor.com/2026-06-02-Realtor-com-R-Launches-RealAssist-TM-AI-A-Completely-Reimagined-Way-to-Find-A-Home}
+
+    \item Realtor.com, AI Dream Home:
+    \url{https://www.realtor.com/research/dream-home-june-2023/}
+
+    \item Rightmove, AI Search and Ask Rightmove:
+    \url{https://faq.rightmove.co.uk/support/solutions/articles/7000100087-ai-search-and-ask-rightmove-}
+
+    \item Rightmove, Ask Rightmove Listing Rollout:
+    \url{https://www.rightmove.co.uk/press-centre/rightmove-extends-conversational-search-experience-to-property-listings/}
+
+    \item Rightmove, AI Keyword Sort:
+    \url{https://faq.rightmove.co.uk/support/solutions/articles/7000048756-keyword-sort}
+
+    \item Rightmove, AI Keywords / Style with AI:
+    \url{https://www.rightmove.co.uk/press-centre/rightmove-unveils-ai-tools-to-enhance-home-search-experience/}
+
+    \item Zoopla, AI Smart Tags:
+    \url{https://www.zoopla.co.uk/press/releases/zoopla-further-personalises-search-functionality-using-ai-driving-more/}
+
+    \item Zoopla, OpenAI Agreement:
+    \url{https://www.zoopla.co.uk/press/releases/zoopla-signs-enterprise-agreement-with-openai-investing-in-ai-to-drive-higher-lead-quality-and-customer-roi/}
+
+    \item Zoopla Estimate:
+    \url{https://help.zoopla.co.uk/hc/en-gb/articles/360006701777-What-is-a-Zoopla-house-price-estimate}
+
+    \item PropertyPortal.ai:
+    \url{https://propertyportal.ai/faq}
+
+    \item HouseCanary CanaryAI:
+    \url{https://www.housecanary.com/products/canary-ai}
+
+\end{itemize}
+
+\end{document}\documentclass[11pt,a4paper]{article}
+
+% ------------------------------------------------
+% PACKAGES
+% ------------------------------------------------
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{turkish}
+\setotherlanguage{english}
+
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{xurl}
+
+% ------------------------------------------------
+% PAGE SETTINGS
+% ------------------------------------------------
+\geometry{
+    top=2.2cm,
+    bottom=2.2cm,
+    left=2.4cm,
+    right=2.4cm,
+    headheight=14pt
+}
+
+\setstretch{1.15}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\sloppy
+\emergencystretch=2em
+
+% ------------------------------------------------
+% COLORS
+% ------------------------------------------------
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{secondary}{HTML}{4F81BD}
+\definecolor{lightgray}{HTML}{F3F4F6}
+\definecolor{darkgray}{HTML}{444444}
+
+% ------------------------------------------------
+% HEADINGS
+% ------------------------------------------------
+\titleformat{\section}
+{\Large\bfseries\color{primary}}
+{\thesection.}
+{0.6em}
+{}
+
+\titleformat{\subsection}
+{\large\bfseries\color{secondary}}
+{\thesubsection}
+{0.6em}
+{}
+
+\titleformat{\subsubsection}
+{\normalsize\bfseries}
+{}
+{0em}
+{}
+
+% ------------------------------------------------
+% HEADER / FOOTER
+% ------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AI-Powered Real Estate Platform Opportunities}
+\fancyhead[R]{Neuron}
+\fancyfoot[C]{\thepage}
+
+% ------------------------------------------------
+% LINKS
+% ------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=secondary
+}
+
+% ------------------------------------------------
+% LISTINGS
+% ------------------------------------------------
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{lightgray},
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    showstringspaces=false
+}
+
+% ------------------------------------------------
+% DOCUMENT
+% ------------------------------------------------
+\begin{document}
+
+% ------------------------------------------------
+% TITLE
+% ------------------------------------------------
+\begin{center}
+    {\LARGE\bfseries\color{primary}
+    AI-Powered Real Estate Platform Opportunities}
+
+    \vspace{0.3cm}
+
+    {\large
+    Feature Priorities, Development Approaches and Global Examples}
+
+    \vspace{0.8cm}
+
+    \rule{\textwidth}{0.6pt}
+\end{center}
+
+\vspace{0.5cm}
+
+% ------------------------------------------------
+\section*{Genel Bakış}
+% ------------------------------------------------
+
+İncelenen 21 emlak sitesinde AI açısından en belirgin fırsatlar;
+kullanıcıların mülk aramasını kolaylaştırmak,
+ilan içerisindeki bilgiyi daha erişilebilir hale getirmek,
+kişiselleştirilmiş öneriler sunmak
+ve karar verme sürecini desteklemek etrafında yoğunlaşmaktadır.
+
+Özelliklerin tamamı aynı seviyede ürün değeri veya teknik karmaşıklık
+taşımamaktadır. Bu nedenle öneriler üç ana grupta değerlendirilebilir.
+
+\subsection*{Core Search \& Discovery}
+
+Kullanıcının doğrudan arama ve ilan keşfetme deneyimini iyileştiren
+özellikler:
+
+\begin{enumerate}
+    \item AI Natural-Language Search
+    \item Conversational Property Search
+    \item Ask This Property / AI Property Q\&A
+    \item AI Area / Neighborhood Advisor
+    \item Personalized Property Recommendations
+\end{enumerate}
+
+\subsection*{Decision Support}
+
+Kullanıcının bulduğu mülkler arasında karar vermesine yardımcı olan
+özellikler:
+
+\begin{enumerate}[start=6]
+    \item AI Property Valuation Explanation
+    \item AI Property Comparison
+    \item AI Match Score
+    \item AI Interactive Floorplan
+\end{enumerate}
+
+\subsection*{Advanced \& Specialised AI}
+
+Daha güçlü veri, görsel işleme veya özel kullanıcı segmentleri gerektiren
+özellikler:
+
+\begin{enumerate}[start=10]
+    \item Visual Semantic Search
+    \item AI Virtual Staging
+    \item AI Investment Analysis
+\end{enumerate}
+
+% ================================================================
+\section{AI Natural-Language Search}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcı klasik filtreleri tek tek seçmek yerine:
+
+\begin{quote}
+``Okula yakın, 3 yatak odalı, bahçeli ve £300,000 altında bir ev istiyorum.''
+\end{quote}
+
+gibi doğal bir cümleyle arama yapabilir.
+
+Sistem bu cümleyi yapılandırılmış arama kriterlerine dönüştürür:
+
+\begin{itemize}
+    \item location
+    \item minimum / maximum price
+    \item bedrooms
+    \item property type
+    \item garden
+    \item transport proximity
+    \item school proximity
+    \item additional keywords
+\end{itemize}
+
+\subsection*{Neden değerli?}
+
+İncelenen sitelerde arama kutuları çoğunlukla postcode, şehir veya adres
+tabanlı çalışmaktadır.
+
+Natural-Language Search, kullanıcının filtre sisteminin nasıl çalıştığını
+öğrenmek zorunda kalmadan doğrudan ihtiyacını ifade etmesini sağlar.
+
+Aynı özellik platform seviyesinde geliştirilerek birden fazla
+estate-agent sitesinde kullanılabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item \textbf{LLM:} OpenAI GPT, Claude veya Gemini
+    \item Structured Output / Function Calling
+    \item Elasticsearch / OpenSearch
+    \item Mevcut property database ve filtre API'leri
+    \item Postcode / geolocation servisleri
+\end{itemize}
+
+LLM'in görevi doğrudan ilan bulmak yerine, kullanıcının cümlesini
+güvenilir bir filtre JSON'una dönüştürmek olabilir.
+
+\noindent
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+{
+  "max_price": 300000,
+  "bedrooms": 3,
+  "garden": true,
+  "near_school": true
+}
+\end{lstlisting}
+\end{minipage}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Mevcut property filtrelerinin ortak bir schema altında tanımlanması.
+    \item Kullanıcı prompt'unu bu schema'ya dönüştüren AI parser geliştirilmesi.
+    \item Çıkan kriterlerin mevcut property search API'sine gönderilmesi.
+    \item Desteklenmeyen veya belirsiz kriterlerin kullanıcıya açıklanması.
+    \item Kullanıcı aramalarından hangi terimlerin sık kullanıldığının analiz edilmesi.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Doğrudan örnekler:}
+Zillow, Realtor.com ve Rightmove doğal dil kullanılarak property search
+yapılabilen AI arama deneyimleri geliştirmiştir.
+
+\textbf{Destekleyici yaklaşım:}
+Zoopla, NLP ve computer vision ile oluşturduğu smart tags sayesinde
+klasik filtrelerde bulunmayan property özelliklerini arama sistemine
+eklemektedir.
+
+% ================================================================
+\section{Conversational Property Search}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Natural-Language Search tek bir sorguyu yorumlarken Conversational Search,
+aramayı bir \textbf{multi-turn conversation} haline getirir.
+
+Örneğin:
+
+\begin{quote}
+\textbf{User:} 3 bedroom house near Manchester.
+
+\textbf{AI:} 127 properties found.
+
+\textbf{User:} Biraz daha ucuz olsun.
+
+\textbf{User:} Tren istasyonuna maksimum 20 dakika olsun.
+
+\textbf{User:} Bahçesi olmayanları çıkar.
+\end{quote}
+
+AI önceki konuşmanın bağlamını koruyarak aramayı sürekli günceller.
+
+\subsection*{Neden değerli?}
+
+Ev arama süreci genellikle tek bir filtreleme işlemi değildir.
+Kullanıcı sonuçları gördükçe kriterlerini değiştirir.
+
+Conversational Search bu davranışı doğal hale getirir ve aynı zamanda
+kullanıcının gerçek tercihlerini öğrenmek için önemli veri oluşturur.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item LLM conversation layer
+    \item Function Calling
+    \item Session / conversation state
+    \item Redis
+    \item Property Search API
+    \item PostgreSQL
+    \item Optional user preference profile
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Natural-Language Search altyapısının oluşturulması.
+    \item Kullanıcının aktif filtrelerinin session içerisinde tutulması.
+    \item Yeni mesajların mevcut kriterleri değiştirecek şekilde yorumlanması.
+    \item AI'ın sadece izin verilen property search fonksiyonlarını çağırması.
+    \item Kullanıcı tercihlerinin izin dahilinde recommendation sistemine aktarılması.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Redfin Conversational Search}, kullanıcıların sonuçlarını doğal
+konuşmayla değiştirmesine izin vermektedir.
+
+\textbf{Zillow AI Mode},
+\textbf{Realtor.com RealAssist AI}
+ve \textbf{Ask Rightmove} ise property search'ü geleneksel filtre
+sisteminden daha conversational bir deneyime dönüştüren güncel
+örneklerdir.
+
+% ================================================================
+\section{Ask This Property / AI Property Q\&A}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Her property listing üzerinde kullanıcı doğrudan o mülk hakkında soru
+sorabilir:
+
+\begin{itemize}
+    \item ``Driveway iki araba alır mı?''
+    \item ``Bu EPC rating ne anlama geliyor?''
+    \item ``En yakın tren istasyonu nerede?''
+    \item ``Home office için uygun bir oda var mı?''
+    \item ``Bu evde kaç bathroom var?''
+\end{itemize}
+
+AI cevabı internetten genel bilgi üretmek yerine ilgili property'nin
+verilerine dayandırır.
+
+\subsection*{Neden değerli?}
+
+İlan açıklamalarının kalitesi estate agent'a göre ciddi biçimde
+değişmektedir.
+
+Property Q\&A sayesinde uzun açıklamalarda bilgi aramak veya estate
+agent'a temel sorular göndermek yerine kullanıcı cevaplarını doğrudan
+listing içerisinde alabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item LLM
+    \item \textbf{RAG --- Retrieval-Augmented Generation}
+    \item Vector database: pgvector, Pinecone veya Qdrant
+    \item Property description
+    \item EPC
+    \item Floorplan
+    \item Structured listing data
+    \item Local-area APIs
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Her property için güvenilir veri kaynaklarının belirlenmesi.
+    \item Description, EPC ve diğer property bilgilerinin indekslenmesi.
+    \item Kullanıcı sorusuna ilgili verinin retrieval ile getirilmesi.
+    \item LLM'in yalnızca bulunan kaynaklara göre cevap üretmesi.
+    \item Yeterli veri bulunmadığında AI'ın bunu açıkça belirtmesi.
+    \item Gerekli sorularda kullanıcının estate agent enquiry sistemine yönlendirilmesi.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Ask Redfin}, property details, local market ve nearby schools
+gibi konularda AI destekli cevap vermektedir.
+
+\textbf{Ask Rightmove} ise property bilgilerini local-area verileriyle
+birleştirerek listing seviyesinde soru-cevap deneyimi geliştirmektedir.
+
+\textbf{Realtor.com RealAssist AI} de property ve neighborhood
+sorularını conversational interface üzerinden cevaplayan benzer bir
+yaklaşım kullanmaktadır.
+
+% ================================================================
+\section{AI Area / Neighborhood Advisor}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Bir property'nin sadece fiziksel özelliklerini değil, çevresindeki yaşam
+koşullarını da açıklar.
+
+Örneğin:
+
+\begin{itemize}
+    \item nearby schools
+    \item supermarkets
+    \item parks
+    \item restaurants
+    \item railway stations
+    \item commute times
+    \item broadband
+    \item flood risk
+    \item local amenities
+\end{itemize}
+
+AI bu bilgileri tek tek tablo halinde göstermek yerine kullanıcı için
+yorumlayabilir.
+
+\begin{quote}
+``Bu property, Liverpool Street'e yaklaşık 35 dakikalık commute
+mesafesinde. Yakın çevrede üç primary school ve yaklaşık 10 dakika
+yürüme mesafesinde iki supermarket bulunuyor.''
+\end{quote}
+
+\subsection*{Neden değerli?}
+
+Kullanıcı aslında yalnızca bir bina değil, belirli bir
+\textbf{location + lifestyle} kombinasyonu satın almaktadır.
+
+İncelenen sitelerde çoğu zaman yalnızca temel Google Maps embed'i
+bulunması bu konuda önemli bir geliştirme fırsatı oluşturmaktadır.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Google Maps Platform
+    \item Google Places API
+    \item Routes / Distance Matrix
+    \item UK school datasets
+    \item Transport APIs
+    \item Environment Agency flood data
+    \item Broadband datasets
+    \item LLM summarisation
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Property postcode veya koordinatının alınması.
+    \item Güvenilir üçüncü parti kaynaklardan çevre verilerinin toplanması.
+    \item Verinin standart bir area profile formatına dönüştürülmesi.
+    \item LLM ile kullanıcı dostu açıklamalar oluşturulması.
+    \item Kullanıcının kendi iş veya okul adresini girerek commute hesaplayabilmesi.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow doğal dil aramasında schools, commute ve points of interest
+kriterlerini kullanmaktadır.
+
+Realtor.com RealAssist AI kullanıcıların günlük rutin ve commute
+ihtiyaçlarını property search'e dahil etmeyi hedeflemektedir.
+
+Ask Rightmove ise Google Maps local-area verilerini property
+bilgileriyle birlikte kullanmaktadır.
+
+% ================================================================
+\section{Personalized Property Recommendations}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcının davranışlarından hangi property türleriyle ilgilendiğini
+öğrenir ve buna göre öneriler sunar.
+
+Sinyaller arasında:
+
+\begin{itemize}
+    \item viewed properties
+    \item saved properties
+    \item searches
+    \item price ranges
+    \item locations
+    \item property types
+    \item ignored listings
+    \item enquiry behaviour
+\end{itemize}
+
+bulunabilir.
+
+\subsection*{Neden değerli?}
+
+İncelenen estate-agent sitelerinde ``Similar Properties'' veya sidebar
+alanlarının önemli bölümü gerçekte kişiselleştirilmiş değildir ve
+yalnızca newest/latest properties göstermektedir.
+
+Gerçek recommendation sistemi kullanıcıya daha alakalı ilanlar
+gösterebilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\textbf{İlk versiyon:}
+
+\begin{itemize}
+    \item Rule-based recommendation
+    \item SQL / Elasticsearch similarity
+    \item Property feature vectors
+\end{itemize}
+
+\textbf{Daha gelişmiş versiyon:}
+
+\begin{itemize}
+    \item Embeddings
+    \item Collaborative filtering
+    \item Learning-to-rank
+    \item Recommendation models
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Önce property-to-property similarity sistemi geliştirilir.
+    \item Kullanıcı davranış sinyalleri anonim veya izinli şekilde toplanır.
+    \item Kullanıcının preference profile'ı oluşturulur.
+    \item Candidate properties skorlanır.
+    \item Recommendation performansı click-through ve enquiry dönüşümüyle ölçülür.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow recommendation ve personalization sistemleri üzerinde uzun
+süredir çalışmaktadır.
+
+Redfin'in conversational search sistemi tercih sinyallerini aktif arama
+sırasında kullanmaktadır.
+
+Zoopla da AI-enabled kullanıcıların listing engagement ve lead
+sonuçlarında artış bildirmiştir.
+
+% ================================================================
+\section{AI Property Valuation Explanation}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Buradaki öneri AI'ın sıfırdan bir property valuation üretmesi değildir.
+
+Mevcut:
+
+\begin{itemize}
+    \item AVM
+    \item ValPal
+    \item Hometrack
+    \item internal valuation model
+\end{itemize}
+
+gibi sistemlerden gelen değerin \textbf{neden o aralıkta olduğunu
+açıklamasıdır}.
+
+\begin{quote}
+``Estimated value ağırlıklı olarak aynı postcode içerisindeki yakın dönem
+satışları, property type, floor area ve bedroom sayısına dayanmaktadır.
+Interior condition bu tahmine dahil edilmemiş olabilir.''
+\end{quote}
+
+\subsection*{Neden değerli?}
+
+Kullanıcı yalnızca bir rakam görmek yerine rakamın arkasındaki faktörleri
+anlayabilir.
+
+Bu özellikle seller lead generation açısından güveni artırabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Existing AVM API
+    \item Comparable sales database
+    \item LLM explanation layer
+    \item Structured valuation factors
+    \item Optional SHAP / feature importance
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Mevcut valuation sisteminin verdiği input/output faktörlerinin alınması.
+    \item Sonucu etkileyen faktörlerin yapılandırılmış olarak AI'a verilmesi.
+    \item AI'ın yalnızca bu faktörleri açıklaması.
+    \item Confidence ve veri eksiklerinin kullanıcıya gösterilmesi.
+    \item Sonucun appraisal veya financial advice olarak sunulmaması.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Zillow Zestimate},
+\textbf{Redfin Estimate}
+ve \textbf{Zoopla Estimate}
+bu alandaki güçlü valuation örnekleridir.
+
+HouseCanary CanaryAI ise valuation ve market verilerini conversational
+AI deneyimi içerisinde sunmaktadır.
+
+% ================================================================
+\section{AI Property Comparison}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcı 2--4 property seçerek bunları yan yana karşılaştırabilir.
+
+AI yalnızca tablo oluşturmak yerine trade-off'ları açıklar.
+
+\begin{quote}
+``Property A £25,000 daha ucuz ancak London commute süresi yaklaşık
+18 dakika daha uzun. Property B'nin EPC rating'i daha iyi ve tahmini
+enerji maliyeti daha düşük.''
+\end{quote}
+
+\subsection*{Neden değerli?}
+
+Ev arayan kullanıcıların en zorlandığı aşamalardan biri farklı browser
+tab'larında bulunan property'leri hatırlamak ve karşılaştırmaktır.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Structured property data
+    \item Comparison engine
+    \item Area / commute APIs
+    \item LLM summarisation
+    \item Saved-property system
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Kullanıcıya ``Compare'' seçeneği eklenir.
+    \item Property verileri normalize edilir.
+    \item Sabit karşılaştırma tablosu oluşturulur.
+    \item AI önemli farklılıkları özetler.
+    \item Kullanıcının kriterlerine göre avantaj/dezavantaj açıklaması yapılabilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow AI Mode ve Realtor.com RealAssist AI property comparison'ı
+conversational AI deneyiminin bir parçası haline getirmektedir.
+
+Redfin'in ChatGPT deneyimi de property ve neighborhood seçeneklerinin
+konuşarak değerlendirilmesine imkan vermektedir.
+
+% ================================================================
+\section{AI Match Score}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Her property için kullanıcının kriterleriyle gerçek bir uyum skoru
+hesaplanır.
+
+Örneğin:
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+\textbf{Criterion} & \textbf{Match} \\
+\midrule
+Price & 100\% \\
+Bedrooms & 100\% \\
+Commute & 75\% \\
+Garden & 100\% \\
+School proximity & 60\% \\
+\midrule
+\textbf{Overall Match} & \textbf{87\%} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Neden değerli?}
+
+Yüzlerce property bulunan search result içerisinde kullanıcının en
+alakalı ilanları daha hızlı bulmasına yardımcı olur.
+
+Ancak skorun gerçek kullanıcı kriterlerine dayanması gerekir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+İlk versiyon için AI şart değildir:
+
+\begin{itemize}
+    \item Weighted scoring algorithm
+    \item Rules engine
+\end{itemize}
+
+Daha ileri seviyede:
+
+\begin{itemize}
+    \item Recommendation models
+    \item Embeddings
+    \item Learning-to-rank
+    \item Behavioural models
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Hard requirements ve soft preferences ayrılır.
+    \item Her kriter için ağırlık belirlenir.
+    \item Property'ler aynı scoring modelinden geçirilir.
+    \item Kullanıcıya skorun neden oluştuğu gösterilir.
+    \item Zamanla kullanıcı davranışından ağırlıklar öğrenilebilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Rightmove AI Keyword Sort, property images ve text içerisindeki keyword
+eşleşmelerini değerlendirerek search result sıralamasında kullanmaktadır.
+
+Zillow recommendation sistemleri predicted property relevance
+yaklaşımına yakın bir model kullanmaktadır.
+
+Zoopla smart tags ise doğrudan match score vermese de property attribute
+extraction için gerekli altyapının iyi bir örneğidir.
+
+% ================================================================
+\section{AI Interactive Floorplan}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Floorplan yalnızca statik bir JPEG veya PDF olmaktan çıkar ve property
+discovery sisteminin bir parçası haline gelir.
+
+Kullanıcı:
+
+\begin{itemize}
+    \item ``Home office için hangi oda daha uygun?''
+    \item ``Kitchen ile living room bağlantılı mı?''
+    \item ``Master bedroom hangisi?''
+    \item ``Bu fotoğraf hangi odaya ait?''
+\end{itemize}
+
+gibi sorular sorabilir.
+
+\subsection*{Neden değerli?}
+
+Floorplan'da bulunan değerli bilgi çoğu estate-agent sitesinde kullanıcı
+tarafından manuel olarak yorumlanmaktadır.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Vision Language Models
+    \item OCR
+    \item Image segmentation
+    \item Object detection
+    \item Floorplan parsing
+    \item Multimodal embeddings
+    \item LLM / Vision-Language Model
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Floorplan içerisindeki room label'ları ve ölçüler çıkarılır.
+    \item Odalar yapılandırılmış bir JSON representation'a dönüştürülür.
+    \item Listing fotoğrafları ilgili odalarla eşleştirilir.
+    \item Kullanıcı floorplan hakkında doğal dilde soru sorabilir.
+    \item Model confidence düşük olduğunda bilgi kesinmiş gibi gösterilmez.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{Zillow Showcase}, interactive floorplans ile listing
+fotoğraflarını room-by-room organize eden güçlü bir örnektir.
+
+AI ayrıca listing içerisindeki görselleri ve floorplan ilişkisini
+düzenlemek için kullanılmaktadır.
+
+% ================================================================
+\section{Visual Semantic Search}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Kullanıcı klasik filtrelerde bulunmayan görsel özelliklerle property
+arayabilir:
+
+\begin{itemize}
+    \item ``large windows''
+    \item ``modern kitchen''
+    \item ``kitchen island''
+    \item ``exposed brick''
+    \item ``Victorian style''
+    \item ``river view''
+    \item ``bright living room''
+\end{itemize}
+
+\subsection*{Neden değerli?}
+
+Bir property'nin önemli özelliklerinin tamamı structured database
+içerisinde bulunmayabilir.
+
+Ancak property description ve fotoğraflarından bu özellikler AI ile
+çıkarılabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item CLIP / multimodal embeddings
+    \item Vision Language Models
+    \item Computer Vision
+    \item Vector database
+    \item Elasticsearch hybrid search
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Property fotoğrafları vision model tarafından analiz edilir.
+    \item Görsel attribute'lar çıkarılır.
+    \item Description içerisindeki semantic özelliklerle birleştirilir.
+    \item Property'ler embedding/index sistemine eklenir.
+    \item Kullanıcı sorgusu semantic olarak en yakın property'lerle eşleştirilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zoopla smart tags, NLP ve computer vision kullanarak property
+attribute'ları çıkarmaktadır.
+
+Rightmove AI Keywords de listing images ve text'i analiz ederek normal
+filtrelerde olmayan özelliklere göre property bulmayı hedeflemektedir.
+
+Realtor.com ise AI-generated tags ve image enrichment sistemlerini
+search experience içerisinde kullanmaktadır.
+
+% ================================================================
+\section{AI Virtual Staging}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Boş veya kötü döşenmiş bir property fotoğrafı farklı interior design
+stillerinde yeniden görselleştirilebilir.
+
+Örneğin:
+
+\begin{itemize}
+    \item Scandinavian
+    \item Modern
+    \item Minimal
+    \item Traditional
+    \item Coastal
+\end{itemize}
+
+\subsection*{Neden değerli?}
+
+Özellikle boş property'lerde kullanıcının mekanın potansiyelini
+anlamasına yardımcı olur.
+
+Estate agent tarafında premium listing ürünü olarak da
+konumlandırılabilir.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Image generation models
+    \item Image-to-image models
+    \item Diffusion models
+    \item Depth estimation
+    \item Segmentation
+\end{itemize}
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Kullanıcı veya agent uygun property image seçer.
+    \item Sistem duvar, pencere, kapı ve oda geometrisini mümkün olduğunca korur.
+    \item Seçilen interior style'a göre staging üretilir.
+    \item Original ve AI Staged görüntüler birlikte gösterilir.
+    \item Görselin AI tarafından üretildiği açıkça belirtilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+Zillow Showcase Virtual Staging, kullanıcıların belirli odaları farklı
+tasarım stillerinde görmesine imkan vermektedir.
+
+Rightmove'un \textbf{Style with AI} özelliği de kullanıcıların
+property'nin farklı dekorasyon ihtimallerini görmesine yönelik benzer
+bir uygulamadır.
+
+% ================================================================
+\section{AI Investment Analysis}
+% ================================================================
+
+\subsection*{Ne yapar?}
+
+Buy-to-let veya yatırım amaçlı property arayan kullanıcılar için:
+
+\begin{itemize}
+    \item expected rental yield
+    \item ROI
+    \item comparable sales
+    \item estimated refurbishment
+    \item local market trend
+    \item rental demand
+    \item estimated end value
+    \item EPC
+    \item potential risks
+\end{itemize}
+
+gibi verileri birleştirerek yatırım özeti oluşturur.
+
+\subsection*{Neden değerli?}
+
+Genel residential kullanıcı için zorunlu değildir ancak investor
+ağırlıklı estate agent'lar için önemli bir farklılaştırıcı olabilir.
+
+Aynı zamanda investment lead'lerinin daha iyi qualify edilmesini sağlar.
+
+\subsection*{Kullanılabilecek teknolojiler}
+
+\begin{itemize}
+    \item Property transaction datasets
+    \item Rental datasets
+    \item AVM
+    \item Comparable sales engine
+    \item Financial calculation engine
+    \item Market data APIs
+    \item LLM explanation layer
+\end{itemize}
+
+Burada finansal hesaplamaların LLM tarafından yapılması yerine
+deterministic backend fonksiyonları kullanılması daha güvenlidir.
+
+\subsection*{Geliştirme yaklaşımı}
+
+\begin{enumerate}
+    \item Comparable sales ve rental dataset oluşturulur.
+    \item ROI, yield ve diğer finansal değerler backend'de hesaplanır.
+    \item Property ve area risk verileri toplanır.
+    \item AI yalnızca sonuçları açıklamak ve özetlemek için kullanılır.
+    \item Veri kaynakları ve varsayımlar açık biçimde gösterilir.
+    \item Financial advice olmadığı açıkça belirtilir.
+\end{enumerate}
+
+\subsection*{Dünya örnekleri}
+
+\textbf{PropertyPortal.ai}, property linklerinden refurbishment cost,
+ROI, yield, EPC, comparables ve benzeri yatırım analizleri üretmektedir.
+
+\textbf{HouseCanary CanaryAI} ise valuation, rental forecast ve market
+insight verilerini AI assistant aracılığıyla yatırımcılara sunmaktadır.
+
+% ================================================================
+\section{Teknik Açıdan Ortak Mimari}
+% ================================================================
+
+Bu özelliklerin çoğu birbirinden tamamen bağımsız sistemler değildir.
+Aynı AI ve property-data altyapısı farklı özellikler tarafından tekrar
+kullanılabilir.
+
+Örneğin ortak bir architecture şu şekilde oluşturulabilir:
+
+\noindent
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+Property Database
+       |
+       +-- Property Search API
+       |
+       +-- Property Data API
+       |
+       +-- Area / Location Data
+       |
+       +-- User Preference Data
+                |
+                v
+          AI Service Layer
+                |
+      +---------+----------+
+      |         |          |
+   Natural   Property     Area
+   Search      Q&A       Advisor
+      |         |          |
+      +---------+----------+
+      |                    |
+ Recommendation       Comparison
+      |                    |
+      +---------+----------+
+                |
+           User Interface
+\end{lstlisting}
+\end{minipage}
+
+Backend tarafında örneğin:
+
+\begin{itemize}
+    \item \textbf{FastAPI / Node.js}
+    \item \textbf{PostgreSQL}
+    \item \textbf{Redis}
+    \item \textbf{Elasticsearch / OpenSearch}
+    \item \textbf{pgvector / Qdrant}
+    \item \textbf{OpenAI / Claude / Gemini}
+    \item \textbf{Google Maps / Places}
+    \item mevcut property CRM/API sistemleri
+\end{itemize}
+
+birlikte kullanılabilir.
+
+Bu nedenle her AI özelliği için tamamen yeni bir altyapı kurmak yerine
+\textbf{ortak bir AI Property Intelligence Layer} geliştirmek daha
+anlamlıdır.
+
+% ================================================================
+\section{Ürün Önceliğine Genel Bakış}
+% ================================================================
+
+Özellikler yalnızca ``AI açısından ne kadar etkileyici?'' sorusuyla
+değerlendirilmemelidir.
+
+Daha anlamlı dört kriter:
+
+\begin{itemize}
+    \item User Impact
+    \item Data Readiness
+    \item Development Complexity
+    \item Commercial Potential
+\end{itemize}
+
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\centering\arraybackslash}p{2.2cm}
+    >{\centering\arraybackslash}p{2.2cm}
+    >{\centering\arraybackslash}p{2.5cm}
+    >{\centering\arraybackslash}p{2.5cm}
+}
+\toprule
+\textbf{Feature} &
+\textbf{User Impact} &
+\textbf{Data Readiness} &
+\textbf{Development Complexity} &
+\textbf{Commercial Potential} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Feature} &
+\textbf{User Impact} &
+\textbf{Data Readiness} &
+\textbf{Development Complexity} &
+\textbf{Commercial Potential} \\
+\midrule
+\endhead
+
+Natural-Language Search &
+Very High & High & Medium & High \\
+
+Conversational Search &
+Very High & High & Medium & High \\
+
+Property Q\&A &
+Very High & High & Medium & High \\
+
+Area Advisor &
+High & Medium--High & Medium & High \\
+
+Recommendations &
+High & Medium & Medium & High \\
+
+Valuation Explanation &
+High & Medium & Medium & High \\
+
+Property Comparison &
+High & High & Low--Medium & Medium--High \\
+
+Match Score &
+Medium--High & High & Low--Medium & Medium \\
+
+Interactive Floorplan &
+Medium--High & Medium & High & High \\
+
+Visual Semantic Search &
+Medium & Medium & High & Medium--High \\
+
+Virtual Staging &
+Medium & High & Medium--High & High \\
+
+Investment Analysis &
+High for Investors & Medium & High & High for Specialist Agents \\
+
+\bottomrule
+\end{longtable}
+
+Bu bakışla
+\textbf{Natural-Language Search},
+\textbf{Property Q\&A}
+ve
+\textbf{Conversational Search}
+özellikle güçlü başlangıç noktalarıdır.
+
+Bunun nedeni yalnızca kullanıcı açısından görünür AI özellikleri olmaları
+değildir.
+
+Aynı zamanda bu özellikler için geliştirilen altyapı daha sonra:
+
+\begin{itemize}
+    \item Property Comparison
+    \item Recommendations
+    \item Match Score
+    \item Area Advisor
+    \item Investment Analysis
+\end{itemize}
+
+gibi birçok özelliğin temelini oluşturabilir.
+
+Dolayısıyla amaç birbirinden bağımsız 12 AI feature geliştirmek yerine,
+ortak veri ve AI altyapısı üzerinde zaman içerisinde farklı kullanıcı
+deneyimlerinin oluşturulması olmalıdır.
+
+% ================================================================
+\section{Sonuç}
+% ================================================================
+
+Global real-estate platformlarındaki AI dönüşümü yalnızca listing
+description üretmek veya chatbot eklemek üzerine ilerlememektedir.
+
+Zillow, Redfin, Realtor.com, Rightmove ve Zoopla örneklerinde daha önemli
+eğilim, AI'ın doğrudan
+\textbf{property discovery ve decision-making journey}
+içerisine yerleştirilmesidir.
+
+Neuron açısından en güçlü fırsat da benzer şekilde AI'ı ayrı bir araç
+olarak sunmak yerine mevcut property search altyapısına entegre
+etmektir.
+
+Özellikle:
+
+\begin{center}
+\Large
+\textbf{
+Search
+$\rightarrow$
+Understand
+$\rightarrow$
+Discover
+$\rightarrow$
+Compare
+$\rightarrow$
+Decide
+$\rightarrow$
+Enquire
+}
+\end{center}
+
+akışının tamamının aynı property ve user-data katmanını kullanan AI
+servisleriyle desteklenmesi, tek tek feature geliştirmekten daha güçlü
+ve ölçeklenebilir bir ürün yaklaşımı oluşturacaktır.
+
+% ================================================================
+\section*{Kaynaklar}
+% ================================================================
+
+\begin{itemize}[leftmargin=*]
+
+    \item Zillow, AI Mode:
+    \url{https://www.zillow.com/news/zillow-debuts-ai-mode/}
+
+    \item Zillow, AI Mode Technical Overview:
+    \url{https://www.zillow.com/news/how-zillows-new-ai-mode-works-throughout-the-real-estate-journey/}
+
+    \item Zillow, Natural Language Search:
+    \url{https://zillow.mediaroom.com/2023-01-26-Zillows-new-AI-powered-natural-language-search-is-a-first-in-real-estate}
+
+    \item Zillow, Natural Language Search Update:
+    \url{https://zillow.mediaroom.com/2024-09-04-Zillows-AI-powered-home-search-gets-smarter-with-new-natural-language-features}
+
+    \item Zillow, Virtual Staging:
+    \url{https://zillow.mediaroom.com/2025-09-10-Zillow-brings-AI-powered-Virtual-Staging-to-Showcase-listings}
+
+    \item Zillow, Showcase Interactive Floor Plans:
+    \url{https://zillow.mediaroom.com/2023-06-27-The-listing-of-the-future-is-here-ShowingTime-launches-new%2C-immersive-listing-experience-on-Zillow}
+
+    \item Zillow, Neural Zestimate:
+    \url{https://www.zillow.com/news/building-the-neural-zestimate/}
+
+    \item Zillow, Personalization:
+    \url{https://www.zillow.com/news/personalized-location-preference/}
+
+    \item Redfin, Conversational Search:
+    \url{https://www.redfin.com/news/press-releases/redfin-debuts-conversational-search-to-reinvent-how-people-find-homes/}
+
+    \item Redfin, Ask Redfin:
+    \url{https://www.redfin.com/news/ask-redfin-launches-nationwide/}
+
+    \item Redfin App in ChatGPT:
+    \url{https://www.redfin.com/news/press-releases/redfin-debuts-real-estate-app-in-chatgpt/}
+
+    \item Redfin Estimate:
+    \url{https://www.redfin.com/redfin-estimate}
+
+    \item Realtor.com, AI-Powered Search Architecture:
+    \url{https://techblog.realtor.com/search-how-youd-say-it-building-ai-powered-search-at-realtor-com/}
+
+    \item Realtor.com, RealAssist AI:
+    \url{https://mediaroom.realtor.com/2026-06-02-Realtor-com-R-Launches-RealAssist-TM-AI-A-Completely-Reimagined-Way-to-Find-A-Home}
+
+    \item Realtor.com, AI Dream Home:
+    \url{https://www.realtor.com/research/dream-home-june-2023/}
+
+    \item Rightmove, AI Search and Ask Rightmove:
+    \url{https://faq.rightmove.co.uk/support/solutions/articles/7000100087-ai-search-and-ask-rightmove-}
+
+    \item Rightmove, Ask Rightmove Listing Rollout:
+    \url{https://www.rightmove.co.uk/press-centre/rightmove-extends-conversational-search-experience-to-property-listings/}
+
+    \item Rightmove, AI Keyword Sort:
+    \url{https://faq.rightmove.co.uk/support/solutions/articles/7000048756-keyword-sort}
+
+    \item Rightmove, AI Keywords / Style with AI:
+    \url{https://www.rightmove.co.uk/press-centre/rightmove-unveils-ai-tools-to-enhance-home-search-experience/}
+
+    \item Zoopla, AI Smart Tags:
+    \url{https://www.zoopla.co.uk/press/releases/zoopla-further-personalises-search-functionality-using-ai-driving-more/}
+
+    \item Zoopla, OpenAI Agreement:
+    \url{https://www.zoopla.co.uk/press/releases/zoopla-signs-enterprise-agreement-with-openai-investing-in-ai-to-drive-higher-lead-quality-and-customer-roi/}
+
+    \item Zoopla Estimate:
+    \url{https://help.zoopla.co.uk/hc/en-gb/articles/360006701777-What-is-a-Zoopla-house-price-estimate}
+
+    \item PropertyPortal.ai:
+    \url{https://propertyportal.ai/faq}
+
+    \item HouseCanary CanaryAI:
+    \url{https://www.housecanary.com/products/canary-ai}
+
+\end{itemize}
+
+\end{document}
